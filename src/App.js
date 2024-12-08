@@ -1,6 +1,7 @@
 import logo from './Images/nightowlslogo.png';
 import './App.css';
 import './index.css';
+//Use the 'App.css to give color, shape, size, style, etc
 function App() {
     return (
     <div className="App">
