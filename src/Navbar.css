@@ -1,0 +1,50 @@
+.App-logo {
+  height: 8vmax;
+}
+.left-side {
+  display: flex;
+  gap: 2vmax;
+}
+.right-side{
+  display: flex;
+  gap:2vmax;
+}
+.header-text {
+  font-size: calc(5.5vmin);
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
+}
+.post-button{
+  width: 25vmin;
+  position: relative;
+  left: 5vmin;
+  font-size: calc(5.5vmin);
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
+  border: 1px solid #ccc;
+  border-style: solid;
+  border-radius: 1vmin;
+  display: inline-block;  
+  background-color: #D15F22; 
+  transition: transform 0.2s;
+}
+.post-button:hover {
+  transform: scale(1.05);
+}
+.navbar{
+  background-color: #020408;
+  border: 1px;
+  border-bottom: 1px solid #ccc;
+  height: calc(3vmax+15px);
+  width: calc(98%);
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+  top: 0px;
+  left: 0px;
+  position: sticky;
+  z-index: 10;
+}

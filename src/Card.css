@@ -1,0 +1,126 @@
+.card-container.computer{
+    display: grid;
+    gap: 3vmax;
+    padding: 3vw;
+    overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+    background-color: #020408;
+    background-size: auto;
+    background-position: center;
+}
+.card-container.mobile{
+    display: grid;
+    gap: 3vmax;
+    padding: 3vw;
+    overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+    grid-template-rows: repeat(1,1fr);
+    background-color: #020408;
+    background-size: auto;
+  background-position: center;
+}
+.card {
+    border: 3px solid #ccc;
+    border-radius: 1vw;
+    position: relative;
+    width: 60vmin;
+    height: 60vmin;
+    background-color: #151515;
+    transition: transform 0.2s;
+    box-shadow: 0px 0px 4px 2px rgba(10, 90, 144, 0.64);
+    box-sizing: border-box;
+}
+
+.fullscreen-button:hover {
+    transform: scale(1.15);
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 9999;
+    overflow: auto;
+    transform: none;
+  }
+  
+  .card.fullscreen .card-content {
+    padding: 40px;
+  }
+.card-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+.fullscreen-button{
+    width:  5vh;
+    height: 5vh;
+    cursor: pointer;
+    position: absolute;
+    left: calc(98% - 3vh - 1vw) ;
+    bottom: calc(98% - 3vh - 1vw);
+    transition: transform 0.2s;
+}
+.card-image{
+  width:  20vh;
+  height: 20vh;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.card-descriptionTruncate{
+  display: -webkit-box;           /* Makes the element behave like a box */
+  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
+  overflow: hidden;               /* Hides overflowed content */
+  -webkit-line-clamp: 2;          /* Specifies the number of lines to display */
+  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */
+  max-height: 3em;       
+    font-size:2.5vh;
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
+}
+.card-description{
+  word-wrap: break-word;
+  max-width: 100%; 
+    font-size:2.2vh;
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
+}
+.card-title{
+  font-size: 5vh;
+font-family : Helvetica;
+font-weight: bold;
+color: #ffffff;
+}
+.card-fusion{
+  font-size:2.5vh;
+font-family : Helvetica;
+font-weight: bold;
+color: #61dafb;
+}
+.card-teamNumber{
+  word-wrap: break-word;
+  width:  15vh;
+  max-height: 5vh;
+  position: absolute;
+  font-size:2vh ;
+font-family : Helvetica;
+font-weight: bold;
+color: #ffffff;
+left: calc(98% - 13vh - 1vw) ;
+top: calc(98% - 5vh - 1vw);
+color: #61dafb;
+}
