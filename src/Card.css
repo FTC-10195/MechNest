@@ -79,14 +79,26 @@
   cursor: pointer;
   transition: transform 0.2s;
 }
-.card-descriptionTruncate{
+.card-descriptionTruncate.computer{
   display: -webkit-box;           /* Makes the element behave like a box */
   -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
   overflow: hidden;               /* Hides overflowed content */
   -webkit-line-clamp: 2;          /* Specifies the number of lines to display */
   line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */
   max-height: 3em;       
-    font-size:2.5vh;
+    font-size:2.5vmin;
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
+}
+.card-descriptionTruncate.mobile{
+  display: -webkit-box;           /* Makes the element behave like a box */
+  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
+  overflow: hidden;               /* Hides overflowed content */
+  -webkit-line-clamp: 1;          /* Specifies the number of lines to display */
+  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */
+  max-height: 3em;       
+    font-size:2.5vmin;
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
@@ -94,13 +106,13 @@
 .card-description{
   word-wrap: break-word;
   max-width: 100%; 
-    font-size:2.2vh;
+    font-size:2.2vmin;
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
 }
 .card-title{
-  font-size: 5vh;
+  font-size: 5vmin;
 font-family : Helvetica;
 font-weight: bold;
 color: #ffffff;
@@ -123,4 +135,16 @@ color: #ffffff;
 left: calc(98% - 13vh - 1vw) ;
 top: calc(98% - 5vh - 1vw);
 color: #61dafb;
+}
+.tags{
+  width:  20vh;
+    height: 5vh;
+  position: absolute;
+  right: calc(98% - 15vh - 1vw) ;
+    top: calc(98% - 5vh - 1vw);
+  font-size:2vh;
+font-family : Helvetica;
+font-weight: bold;
+color: #ffffff;
+overflow-y: scroll;
 }

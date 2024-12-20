@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Card.css';
 import fullScreenButton from './Images/fullscreen.png';
 import fullScreenExitButton from './Images/fullscreenexit.png';
-function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusionLink, fusionText, onClick }) {
+function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusionLink, fusionText, tags, isMobile, onClick }) {
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     // Toggle fullscreen state when button is clicked
@@ -11,6 +11,14 @@ function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusio
       setIsFullscreen(!isFullscreen);
     };
     const combinedNameNumber =  teamName + " " + teamNumber;
+    var combinedTags = "";
+    for (let i = 0; i < tags.length; i++) {
+        var newTag = tags[i];
+        if (tags[i] == 'N/A'){
+            newTag = "";
+        }
+        combinedTags += "\n" + newTag;
+    }
     return (
         <div className={`card ${isFullscreen ? 'fullscreen' : ''}`}>
             <h3 className = "card-title">{title}</h3>
@@ -23,7 +31,12 @@ function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusio
             >
                  <span className="card-teamNumber">{combinedNameNumber}</span>
             </a>
-            <p className = {isFullscreen ? "card-description"   : "card-descriptionTruncate"}>{description}</p>
+                 <span className="tags">
+                    Tags:
+                    <br/>
+                     {combinedTags}
+                </span>
+            <p className = {isFullscreen ? "card-description"   : `card-descriptionTruncate ${isMobile ? 'mobile' : 'computer' }`}>{description}</p>
             <a
                 href={fusionLink}
                 target="_blank"
