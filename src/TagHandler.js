@@ -9,7 +9,7 @@ function TagHandler({ selectedTags, setTag, tagStates }) {
     tagStates.DriveTrain,
     tagStates.Arm,
     tagStates.VerticalSlides,
-    tagStates.Lvl2Ascent,
+    tagStates.Level2Ascent,
     tagStates.Level3Ascent,
     tagStates.LowBasket,
     tagStates.HighBasket,

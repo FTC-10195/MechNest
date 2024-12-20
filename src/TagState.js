@@ -3,7 +3,7 @@ const tagStates = Object.freeze({
    DriveTrain: 'DriveTrain',
    Arm: 'Arm',
    VerticalSlides: 'VerticalSlides',
-  Lvl2Ascent: 'Lvl 2 Ascent',
+  Level2Ascent: 'Lvl 2 Ascent',
    Level3Ascent: 'Level 3 Ascent',
    LowBasket:'Low Basket',
    HighBasket:'High Basket',
