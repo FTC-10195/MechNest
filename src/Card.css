@@ -73,10 +73,9 @@
     transition: transform 0.2s;
 }
 .card-image{
-  width:  20vh;
-  height: 20vh;
+  width:  20vmin;
+  height: 20vmin;
   object-fit: cover;
-  cursor: pointer;
   transition: transform 0.2s;
 }
 .card-descriptionTruncate.computer{
@@ -118,33 +117,53 @@ font-weight: bold;
 color: #ffffff;
 }
 .card-fusion{
-  font-size:2.5vh;
+  font-size: 2.2vmin;
 font-family : Helvetica;
 font-weight: bold;
 color: #61dafb;
 }
 .card-teamNumber{
   word-wrap: break-word;
-  width:  15vh;
-  max-height: 5vh;
+  width:  15vmin;
+  max-height: 5vmin;
   position: absolute;
-  font-size:2vh ;
+  font-size:2vmin ;
 font-family : Helvetica;
 font-weight: bold;
 color: #ffffff;
-left: calc(98% - 13vh - 1vw) ;
-top: calc(98% - 5vh - 1vw);
+right: 0;
+bottom: 0;
+margin: 1vmin;
 color: #61dafb;
 }
-.tags{
-  width:  20vh;
-    height: 5vh;
+.tag-container{
+  width:  20vmin;
+    height: 15vmin;
   position: absolute;
-  right: calc(98% - 15vh - 1vw) ;
-    top: calc(98% - 5vh - 1vw);
-  font-size:2vh;
+  left: 0;
+    bottom: 0;
+  margin: .2vmin;
 font-family : Helvetica;
 font-weight: bold;
 color: #ffffff;
 overflow-y: scroll;
+display: grid;
+  gap: .2vmin;
+  padding: .2vmin;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3,1fr);
+  flex-wrap: wrap;
+}
+.tag{
+  font-size: 1.5vmin;
+  border: 1px solid #ccc;
+  border-style: solid;
+  border-radius: 1vmin;
+  display: inline-block;  
+  background-color: #1d1d1c; 
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }

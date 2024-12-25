@@ -18,43 +18,43 @@ function App() {
       id: 1, title: 'Title 1', description: 'descriptiondescription...', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
       tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides] 
     },
     { 
       id: 2, title: 'Title 2', description: 'descriptiondescription...', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot] 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.Outreach] 
     },
     { 
       id: 3, title: 'Title 3', description: 'descriptiondescription...', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot] 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.POWERPLAY] 
     },
     { 
-      id: 4, title: 'Title 4', description: 'descriptiondescription...', 
+      id: 4, title: 'Title 4', description: 'descriptiondescription', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot] 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.IntoTheDeep] 
     },
     { 
-      id: 5, title: 'Title 5', description: 'descriptiondescription...', 
+      id: 5, title: 'Title 5', description: 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot] 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.CENTERSTAGE] 
     },
     { 
-      id: 6, title: 'Title 6', description: 'descriptiondescription...', 
+      id: 6, title: 'Title 6', description: 'descriptiondescription', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      fusionLink: "https://mystu29102.autodesk360.com", fusionText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot] 
+      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.FreightFrenzy] 
     }
   ];
 
@@ -75,6 +75,9 @@ function App() {
     var CARDTAGS = preFilteredCards[i].tags;
     if (findString(CARDTAGS,selectedTags)){
        cards[i] = preFilteredCards[i];
+       if (cards[i].tags[0] == "N/A"){
+        cards[i].tags = cards[i].tags.filter(item => item !== "N/A");
+       }
     }
   }
   window.addEventListener('resize', checkDevice);
@@ -95,8 +98,8 @@ function App() {
             teamLink={card.teamLink}
             teamName={card.teamName}
             teamNumber={card.teamNumber}
-            fusionLink={card.fusionLink}
-            fusionText={card.fusionText}
+            cadLink={card.cadLink}
+            cadText={card.cadText}
             tags={card.tags}
             isMobile={isMobile}
             onClick={() => handleCardClick(card)}

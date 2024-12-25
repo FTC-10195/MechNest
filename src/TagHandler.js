@@ -1,20 +1,26 @@
 import { useState } from 'react';
 import './Tags.css';
-import tagStates from './TagState';
 import './index.css';
-
-function TagHandler({ selectedTags, setTag, tagStates }) {
+import tagStates from './TagState';
+function TagHandler({ selectedTags, setTag }) {
   const tagsList = [
     tagStates.NA,
     tagStates.DriveTrain,
     tagStates.Arm,
+    tagStates.Intake,
+    tagStates.Ascent,
     tagStates.VerticalSlides,
-    tagStates.Level2Ascent,
-    tagStates.Level3Ascent,
-    tagStates.LowBasket,
-    tagStates.HighBasket,
-    tagStates.LowChamber,
-    tagStates.HighChamber,
+    tagStates.Extendo,
+    tagStates.IntoTheDeep,
+    tagStates.CENTERSTAGE,
+    tagStates.POWERPLAY,
+    tagStates.FreightFrenzy,
+    tagStates.UltimateGoal,
+    tagStates.SkyStone,
+    tagStates.RoverRuckus,
+    tagStates.RelicRevory,
+    tagStates.VelocityVortex,
+    tagStates.Outreach,
     tagStates.WholeRobot
   ];
 

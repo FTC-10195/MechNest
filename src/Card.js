@@ -3,22 +3,12 @@ import { useState } from 'react';
 import './Card.css';
 import fullScreenButton from './Images/fullscreen.png';
 import fullScreenExitButton from './Images/fullscreenexit.png';
-function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusionLink, fusionText, tags, isMobile, onClick }) {
+function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile, onClick }) {
     const [isFullscreen, setIsFullscreen] = useState(false);
-
-    // Toggle fullscreen state when button is clicked
     const handleToggleFullscreen = () => {
       setIsFullscreen(!isFullscreen);
     };
     const combinedNameNumber =  teamName + " " + teamNumber;
-    var combinedTags = "";
-    for (let i = 0; i < tags.length; i++) {
-        var newTag = tags[i];
-        if (tags[i] == 'N/A'){
-            newTag = "";
-        }
-        combinedTags += "\n" + newTag;
-    }
     return (
         <div className={`card ${isFullscreen ? 'fullscreen' : ''}`}>
             <h3 className = "card-title">{title}</h3>
@@ -31,18 +21,21 @@ function Card({ title, description,imageLink,teamNumber, teamName,teamLink,fusio
             >
                  <span className="card-teamNumber">{combinedNameNumber}</span>
             </a>
-                 <span className="tags">
-                    Tags:
-                    <br/>
-                     {combinedTags}
+                 <span className="tag-container">
+                    Tags: <br/>
+                    {tags.map((tag,index) => (
+                        <li key = {index} className="tag">
+                            {tag}
+                        </li>
+                    ))}
                 </span>
             <p className = {isFullscreen ? "card-description"   : `card-descriptionTruncate ${isMobile ? 'mobile' : 'computer' }`}>{description}</p>
             <a
-                href={fusionLink}
+                href={cadLink}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                 <p className="card-fusion">{fusionText}</p>
+                 <p className="card-fusion">{cadText}</p>
             </a>
         </div>
     );
