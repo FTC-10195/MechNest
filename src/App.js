@@ -15,11 +15,11 @@ function App() {
   const [selectedSeason, setSeason] = useState('N/A'); 
   const preFilteredCards = [
     { 
-      id: 1, title: 'GoBilda Intake, V1 Bot (SOAR)',
+      id: 1, title: 'V1 Bot (SOAR)',
       description: 'We made a bot using the GoBilda intake, vertical slides, an extendo, and two axons for a rotation mechanism', 
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
+      cadLink: "https://mystu29102.autodesk360.com/g/shares/SH286ddQT78850c0d8a423c01478f66d1398", cadText: "V1 Design", 
       tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides],
       season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
