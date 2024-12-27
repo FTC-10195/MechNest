@@ -2,9 +2,9 @@ import { useState } from 'react';
 import './App.css';
 import Card from './Card';
 import Navbar from './Navbar';
-import TagHandler from './TagHandler';
-import logo from './Images/nightowlslogo.png';
-import tagStates from './TagState';
+import MechanismHandler from './MechanismHandler';
+import mechanismStates from './MechanismState';
+import seasonStates from './SeasonStates'
 import './index.css';
 
 function App() {
@@ -12,50 +12,25 @@ function App() {
   const [selectedFullscreen, setFullScreen] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedTags, setTag] = useState('N/A'); 
-
+  const [selectedSeason, setSeason] = useState('N/A'); 
   const preFilteredCards = [
     { 
-      id: 1, title: 'Title 1', description: 'descriptiondescription...', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
+      id: 1, title: 'GoBilda Intake, V1 Bot (SOAR)',
+      description: 'We made a bot using the GoBilda intake, vertical slides, an extendo, and two axons for a rotation mechanism', 
+      imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides] 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides],
+      season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
     { 
-      id: 2, title: 'Title 2', description: 'descriptiondescription...', 
+      id: 2, title: 'Placeholder', description: 'descriptiondescription...', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.Outreach] 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.WholeRobot],
+      season: [seasonStates.NA, seasonStates.Outreach]
     },
-    { 
-      id: 3, title: 'Title 3', description: 'descriptiondescription...', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
-      teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.POWERPLAY] 
-    },
-    { 
-      id: 4, title: 'Title 4', description: 'descriptiondescription', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
-      teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.IntoTheDeep] 
-    },
-    { 
-      id: 5, title: 'Title 5', description: 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
-      teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.CENTERSTAGE] 
-    },
-    { 
-      id: 6, title: 'Title 6', description: 'descriptiondescription', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
-      teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [tagStates.NA, tagStates.DriveTrain, tagStates.VerticalSlides, tagStates.WholeRobot,tagStates.FreightFrenzy] 
-    }
   ];
 
   const handleCardClick = (card) => { setSelectedCard(card); };
@@ -73,10 +48,14 @@ function App() {
   const cards = [];
   for (let i = 0; i < preFilteredCards.length; i++) {
     var CARDTAGS = preFilteredCards[i].tags;
-    if (findString(CARDTAGS,selectedTags)){
+    var CARDSEASONS = preFilteredCards[i].season;
+   if (findString(CARDTAGS,selectedTags) && findString(CARDSEASONS,selectedSeason)){
        cards[i] = preFilteredCards[i];
        if (cards[i].tags[0] == "N/A"){
         cards[i].tags = cards[i].tags.filter(item => item !== "N/A");
+       }
+       if (cards[i].season[0] == "N/A"){
+        cards[i].season = cards[i].season.filter(item => item !== "N/A");
        }
     }
   }
@@ -86,7 +65,7 @@ function App() {
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
       <title>CAD Website</title>
       <Navbar />
-      <TagHandler selectedTags={selectedTags} setTag={setTag} tagStates={tagStates} />
+      <MechanismHandler selectedTags={selectedTags} setTag={setTag} selectedSeason = {selectedSeason} setSeason = {setSeason} />
       
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
@@ -101,6 +80,7 @@ function App() {
             cadLink={card.cadLink}
             cadText={card.cadText}
             tags={card.tags}
+            season = {card.season}
             isMobile={isMobile}
             onClick={() => handleCardClick(card)}
           />

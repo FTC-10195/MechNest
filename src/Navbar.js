@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import './Navbar.css';
-import logo from './Images/nightowlslogo.png';
-import backgroundImage from './Images/backgroundImage.png';
 import './index.css';
 //Use the 'App.css to give color, shape, size, style, etc
 function Navbar() {
@@ -22,7 +20,7 @@ function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={logo} alt="logo" className = "App-logo"/>
+          <img src={'./Images/nightowlslogo.png'} alt="logo" className = "App-logo"/>
         </a>
       </header>
   );

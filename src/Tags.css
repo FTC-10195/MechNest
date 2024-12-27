@@ -1,8 +1,13 @@
 .tags-search-area{
+  display: grid;
+  gap: 6vmax;
+  padding: 3vw;
   justify-content: space-between;
   display: flex;
   align-items: left;
   padding-left: 2%;
+  justify-content: left;
+    grid-template-rows: repeat(1,1fr);
 }
 .tags-search-text{
   font-size: calc(4.5vmin);
