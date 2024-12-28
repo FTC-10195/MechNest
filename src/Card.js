@@ -7,36 +7,46 @@ function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLi
       setIsFullscreen(!isFullscreen);
     };
     const combinedNameNumber =  teamName + " " + teamNumber;
+function getCardType(){
+        if (isFullscreen){
+            return 'fullscreen'
+        }
+        if (isMobile){
+            return 'mobile'
+        }else {
+            return 'computer'
+        }
+    }
     return (
-        <div className={`card ${isFullscreen ? 'fullscreen' : ''}`}>
-            <h3 className = "card-title">{title}</h3>
-            <div className = "season"> {season} </div>
-            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = "fullscreen-button" onClick={handleToggleFullscreen}/>
-            <img src={imageLink} alt="image" className = "card-image"/>
+        <div className={`card ${getCardType()}`}>
+            <h3 className = {`card-title ${isMobile ? 'mobile' : 'computer'}`}>{title}</h3>
+            <div className = {`season ${isMobile ? 'mobile' : 'computer'}`}> {season} </div>
+            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={handleToggleFullscreen}/>
+            <img src={imageLink} alt="image" className = {`card-image ${isMobile ? 'mobile' : 'computer'}`}/>
             <a
                 href={teamLink}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                 <span className="card-teamNumber">{combinedNameNumber}</span>
+                 <span className={`card-teamNumber ${isMobile ? 'mobile' : 'computer'}`}>{combinedNameNumber}</span>
             </a>
-            <span className="tag-container-large">
+            <span className={`tag-container-large ${isMobile ? 'mobile' : 'computer'}`}>
             Mechanisms: <br/>
                  <span className="tag-container">
                     {tags.map((tag,index) => (
-                        <li key = {index} className="tag">
+                        <li key = {index} className={`tag ${isMobile ? 'mobile' : 'computer'}`}>
                             {tag}
                         </li>
                     ))}
                 </span>
             </span>
-            <p className = {isFullscreen ? "card-description"   : `card-descriptionTruncate`}>{description}</p>
+            <p className = {`card-description ${getCardType()}`}>{description}</p>
             <a
                 href={cadLink}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                 <p className="card-fusion">{cadText}</p>
+                 <p className={`card-fusion ${isMobile ? 'mobile' : 'computer'}`}>{cadText}</p>
             </a>
         </div>
     );

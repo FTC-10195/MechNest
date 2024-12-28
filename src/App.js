@@ -24,11 +24,12 @@ function App() {
       season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
     { 
-      id: 2, title: 'Placeholder', description: 'descriptiondescription...', 
+      id: 2, title: 'Placeholder',
+      description: 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptionddescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptionescriptiondescription', 
       imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
       teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.WholeRobot],
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.WholeRobot,mechanismStates.Intake,mechanismStates.Extendo,mechanismStates.Ascent],
       season: [seasonStates.NA, seasonStates.Outreach]
     },
   ];

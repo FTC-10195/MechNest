@@ -1,25 +1,25 @@
 .App-logo {
-  height: 8vmax;
+  height: calc(4vmin + 20px);
 }
 .left-side {
   display: flex;
-  gap: 2vmax;
+  gap: 20px;
 }
 .right-side{
   display: flex;
   gap:2vmax;
 }
 .header-text {
-  font-size: calc(5.5vmin);
+  font-size: calc(4vmin);
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
 }
 .post-button{
-  width: 25vmin;
+  width: calc(20vmin + 50px);
   position: relative;
-  left: 5vmin;
-  font-size: calc(5.5vmin);
+  left: 20%;
+  font-size: calc(4vmin);
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
