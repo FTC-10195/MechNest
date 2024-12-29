@@ -20,18 +20,36 @@ function App() {
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://mystu29102.autodesk360.com/g/shares/SH286ddQT78850c0d8a423c01478f66d1398", cadText: "V1 Design", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides],
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.Extendo,mechanismStates.Arm,mechanismStates.OdometryPods,mechanismStates.Intake],
       season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
     { 
-      id: 2, title: 'Placeholder',
-      description: 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptionddescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptionescriptiondescription', 
-      imageLink: 'https://images.pexels.com/photos/20787/pexels-photo.jpg', 
-      teamNumber: '10195', teamName: "Mechanical Maniacs", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com", cadText: "V2 Design", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.WholeRobot,mechanismStates.Intake,mechanismStates.Extendo,mechanismStates.Ascent],
-      season: [seasonStates.NA, seasonStates.Outreach]
-    },
+      id: 2, title: 'CenterStage Bot',
+      description: 'Custom bucket, belt driven, intake', 
+      imageLink: './Images/CenterStageBot.png', 
+      teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
+      cadLink: "https://a360.co/4gyzBEx", cadText: "Center Stage Bot", 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.OdometryPods,mechanismStates.Intake],
+      season: [seasonStates.NA,seasonStates.CENTERSTAGE]
+    }, 
+    { 
+      id: 3, title: 'Power Play Bot',
+      description: 'placeholder', 
+      imageLink: './Images/PowerPlayBot.png', 
+      teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
+      cadLink: "https://a360.co/41MRQSc", cadText: "PowerPlayBot", 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.Claw,mechanismStates.Intake,mechanismStates.Arm],
+      season: [seasonStates.NA,seasonStates.POWERPLAY]
+    }, 
+    { 
+      id: 4, title: 'Freight Frenzy Bot',
+      description: 'placeholder', 
+      imageLink: './Images/FreightFrenzyBot.png', 
+      teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
+      cadLink: "https://a360.co/4iROovI", cadText: "FreightFrenzyBot", 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.Intake],
+      season: [seasonStates.NA,seasonStates.FreightFrenzy]
+    }, 
   ];
 
   const handleCardClick = (card) => { setSelectedCard(card); };

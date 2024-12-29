@@ -7,8 +7,9 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  background-size: cover;
+  background-position: center;
     background-color: #020408;
-    background-size: auto;
     background-position: center;
 }
 .card-container.mobile{
@@ -19,8 +20,9 @@
   justify-content: center;
   align-items: center;
     grid-template-rows: repeat(1,1fr);
-    background-color: #020408;
-    background-size: auto;
+    background-size: cover;
+    background-position: center;
+     background-color: #020408;
   background-position: center;
 }
 .card.computer {
@@ -38,6 +40,8 @@
   border: 3px solid #ccc;
   border-radius: 1vw;
   position: relative;
+  background-color: #151515;
+  box-shadow: 0px 0px 4px 2px rgba(10, 90, 144, 0.64);
   width: 200px;
   height: 300px;
 }
@@ -93,6 +97,12 @@
   object-fit: cover;
   transition: transform 0.2s;
 }
+.card-image.fullscreen{
+  width: 30vmax;
+  height: 30vmax;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
 .card-image.mobile{
   width:  100px;
   height: 100px;
@@ -128,8 +138,7 @@
   display: -webkit-box;           /* Makes the element behave like a box */
   -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
   overflow: hidden;               /* Hides overflowed content */
-  -webkit-line-clamp: 2;          /* Specifies the number of lines to display */
-  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */
+  -webkit-line-clamp: 2;          /* Specifies the number of lines to display */           /* Optional: Adjust line-height for spacing between lines */
   max-height: 3em;       
     font-size:12px;
   font-family : Helvetica;
@@ -182,7 +191,7 @@ color: #61dafb;
 }
 .card-teamNumber.mobile{
   word-wrap: break-word;
-  max-width:  calc(66px+1vmin);
+  max-width:  calc(66px);
   max-height: 33px;
   position: absolute;
   right: 1vmin;
@@ -200,7 +209,7 @@ color: #61dafb;
     height: calc(88px);
   position: absolute;
   left: 0;
-    bottom: 0;
+    bottom: 10px;
   margin: .2vmin;
 font-family : Helvetica;
 font-weight: bold;
@@ -210,10 +219,10 @@ overflow-y: scroll;
 .tag-container-large.mobile{
   font-size:  11px;
   width:  100px;
-    height: calc(58px);
+    height: calc(88px);
   position: absolute;
   left: 0;
-    bottom: 0;
+    bottom: -20px;
   margin: .2vmin;
 font-family : Helvetica;
 font-weight: bold;
@@ -223,9 +232,10 @@ overflow-y: scroll;
 .tag-container{
   position: absolute;
 font-family : Helvetica;
+text-align: center;
 font-weight: bold;
 color: #ffffff;
-gap: 2px;
+gap: 4px;
 padding: 4px;
 display: grid;
   justify-content: center;
@@ -234,7 +244,10 @@ display: grid;
   flex-wrap: wrap;
 }
 .tag.computer{
+  height: 24px;
   font-size:  11px;
+  position: relative;
+  text-align: center;
   border: 1px solid #ccc;
   border-style: solid;
   border-radius: 1vmin;
@@ -242,7 +255,10 @@ display: grid;
   background-color: #1d1d1c; 
 }
 .tag.mobile{
+  height: 16px;
   font-size:  7px;
+  position: relative;
+  text-align: center;
   border: 1px solid #ccc;
   border-style: solid;
   border-radius: 1vmin;

@@ -12,6 +12,9 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason }) {
     mechanismStates.Ascent,
     mechanismStates.VerticalSlides,
     mechanismStates.Extendo,
+    mechanismStates.Intake,
+    mechanismStates.Bucket,
+    mechanismStates.Claw,
     mechanismStates.WholeRobot
   ];
   const seasonsList = [

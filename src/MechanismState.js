@@ -7,6 +7,9 @@ const mechanismStates = Object.freeze({
    Ascent: 'Ascent',
    VerticalSlides: 'Vertical Slides',
    Extendo: 'Extendo',
-   WholeRobot:'Whole Robot'
+   OdometryPods: 'Odometry Pods',
+   WholeRobot:'Whole Robot',
+   Claw:'Claw',
+   Bucket: 'Bucket'
  });
 export default mechanismStates;
