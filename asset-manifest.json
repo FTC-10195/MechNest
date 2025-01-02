@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/FTC-10195.github.io/MechNest/static/css/main.11a894f2.css",
-    "main.js": "/FTC-10195.github.io/MechNest/static/js/main.3db99c4a.js",
-    "static/js/488.59979db7.chunk.js": "/FTC-10195.github.io/MechNest/static/js/488.59979db7.chunk.js",
-    "index.html": "/FTC-10195.github.io/MechNest/index.html",
-    "main.11a894f2.css.map": "/FTC-10195.github.io/MechNest/static/css/main.11a894f2.css.map",
-    "main.3db99c4a.js.map": "/FTC-10195.github.io/MechNest/static/js/main.3db99c4a.js.map",
-    "488.59979db7.chunk.js.map": "/FTC-10195.github.io/MechNest/static/js/488.59979db7.chunk.js.map"
+    "main.css": "/MechNest/static/css/main.11a894f2.css",
+    "main.js": "/MechNest/static/js/main.e2456370.js",
+    "static/js/488.59979db7.chunk.js": "/MechNest/static/js/488.59979db7.chunk.js",
+    "index.html": "/MechNest/index.html",
+    "main.11a894f2.css.map": "/MechNest/static/css/main.11a894f2.css.map",
+    "main.e2456370.js.map": "/MechNest/static/js/main.e2456370.js.map",
+    "488.59979db7.chunk.js.map": "/MechNest/static/js/488.59979db7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.11a894f2.css",
-    "static/js/main.3db99c4a.js"
+    "static/js/main.e2456370.js"
   ]
 }
