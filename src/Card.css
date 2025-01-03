@@ -13,16 +13,17 @@
     background-position: center;
 }
 .card-container.mobile{
-    display: grid;
-    gap: 3vmax;
-    padding: 3vw;
-    overflow-x: auto;
-  justify-content: center;
-  align-items: center;
-    grid-template-rows: repeat(1,1fr);
-    background-size: cover;
-    background-position: center;
-     background-color: #020408;
+  display: grid;
+  gap: 3vmax;
+  padding: 3vw;
+  overflow-x: auto;
+justify-content: center;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+background-size: cover;
+background-position: center;
+  background-color: #020408;
   background-position: center;
 }
 .card.computer {
@@ -43,7 +44,7 @@
   background-color: #151515;
   box-shadow: 0px 0px 4px 2px rgba(10, 90, 144, 0.64);
   width: 200px;
-  height: 300px;
+  height: 275px;
 }
 .fullscreen-button:hover {
     transform: scale(1.15);
@@ -178,9 +179,9 @@ color: #61dafb;
   max-width:  80px;
   max-height: 50px;
   position: absolute;
-  right: 1vmin;
+  right: 0;
   bottom: 0;
-  font-size:14px ;
+  font-size:12px ;
 font-family : Helvetica;
 font-weight: bold;
 color: #ffffff;
@@ -203,13 +204,12 @@ color: #61dafb;
 }
 .tag-container-large.computer{
   font-size:  14px;
-  width:  150px;
-    height: 60px;
+  width:  175px;
+    height:110px;
   position: absolute;
-  text-align: center;
-  left: 0;
-    bottom: 5px;
-  margin: .2vmin;
+  place-content: center;
+  left: -10px;
+    bottom: 0;
 font-family : Helvetica;
 font-weight: bold;
 color: #ffffff;
@@ -217,12 +217,12 @@ overflow-y: scroll;
 }
 .tag-container-large.mobile{
   font-size:  11px;
-  width:  100px;
-    height: calc(88px);
+  width:  150px;
+    height: 120px;
   position: absolute;
-  text-align: center;
-  left: 0;
-    bottom: -20px;
+  place-content: center;
+  left: -10px;
+    bottom: -10px;
   margin: .2vmin;
 font-family : Helvetica;
 font-weight: bold;
@@ -232,20 +232,21 @@ overflow-y: scroll;
 .tag-container{
   position: absolute;
 font-family : Helvetica;
-text-align: center;
 font-weight: bold;
 color: #ffffff;
-gap: 4px;
-padding: 4px;
+gap: 3px;
 display: grid;
+overflow-y: scroll;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(3,1fr);
+  display: flex;
   flex-wrap: wrap;
 }
 .tag.computer{
-  height: 24px;
-  font-size:  11px;
+  height: 28px;
+  width: 45px;
+  place-content: center;
+  font-size:  10px;
   position: relative;
   text-align: center;
   border: 1px solid #ccc;
@@ -253,10 +254,18 @@ display: grid;
   border-radius: 4px;
   display: inline-block;  
   background-color: #1d1d1c; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
 }
 .tag.mobile{
-  height: 16px;
-  font-size:  7px;
+  height: 22px;
+  width: 38px;
+  place-content: center;
+  font-size:  9px;
   position: relative;
   text-align: center;
   border: 1px solid #ccc;
@@ -264,6 +273,12 @@ display: grid;
   border-radius: 4px;
   display: inline-block;  
   background-color: #1d1d1c; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
 }
 .season.computer{
   word-wrap: break-word;

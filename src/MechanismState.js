@@ -6,7 +6,7 @@ const mechanismStates = Object.freeze({
    Intake: 'Intake Wheel',
    Ascent: 'Ascent',
    VerticalSlides: 'Vertical Slides',
-   Extendo: 'Extendo',
+   Webcam: 'Webcam',
    OdometryPods: 'Odometry Pods',
    WholeRobot:'Whole Robot',
    Claw:'Claw',

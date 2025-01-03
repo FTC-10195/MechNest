@@ -15,16 +15,16 @@ function App() {
   const [selectedSeason, setSeason] = useState('N/A'); 
   const preFilteredCards = [
     { 
-      id: 1, title: 'V1 Bot (SOAR)',
+      id: 1, title: '🗣️SOAR (V1)🗣️',
       description: 'We made a bot using the GoBilda intake, vertical slides, an extendo, and two axons for a rotation mechanism', 
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.Extendo,mechanismStates.Arm,mechanismStates.OdometryPods,mechanismStates.Intake],
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Arm,mechanismStates.OdometryPods,mechanismStates.Intake],
       season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
     { 
-      id: 2, title: 'CenterStage Bot',
+      id: 2, title: '🌙Otto the Owl🦉',
       description: 'Custom bucket, belt driven, intake', 
       imageLink: './Images/CenterStageBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
@@ -33,7 +33,7 @@ function App() {
       season: [seasonStates.NA,seasonStates.CENTERSTAGE]
     }, 
     { 
-      id: 3, title: 'Power Play Bot',
+      id: 3, title: '💪Power💪',
       description: 'placeholder', 
       imageLink: './Images/PowerPlayBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
@@ -42,7 +42,7 @@ function App() {
       season: [seasonStates.NA,seasonStates.POWERPLAY]
     }, 
     { 
-      id: 4, title: 'Freight Frenzy Bot',
+      id: 4, title: '🚂Hoot Hoot🚂',
       description: 'placeholder', 
       imageLink: './Images/FreightFrenzyBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
@@ -51,12 +51,12 @@ function App() {
       season: [seasonStates.NA,seasonStates.FreightFrenzy]
     }, 
     { 
-      id: 5, title: '5795 POWERPLAY | Thor',
+      id: 5, title: '⚡Thor⚡',
       description: 'Early Iteration of the 5795 POWERPLAY Thor Robot. The robot involves a basic grabber mechanism mounted to a single set of vertical SAR330 linear slides. ', 
       imageLink: './Images/POWERPLAY5795.png', 
       teamNumber: '5795', teamName: "Back to the Drawing Board", teamLink: 'https://ecgrobotics.org//ftc5795/', 
       cadLink: "https://a360.co/4a1pKoh", cadText: "https://a360.co/4a1pKoh", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Claw,mechanismStates.OdometryPods],
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Claw,mechanismStates.OdometryPods, mechanismStates.Webcam],
       season: [seasonStates.NA,seasonStates.POWERPLAY]
     }, 
   ];
@@ -91,10 +91,9 @@ function App() {
 
   return (
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
-      <title>CAD Website</title>
+      <title>Mech Nest</title>
       <Navbar />
       <MechanismHandler selectedTags={selectedTags} setTag={setTag} selectedSeason = {selectedSeason} setSeason = {setSeason} />
-      
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
           <Card

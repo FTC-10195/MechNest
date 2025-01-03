@@ -11,7 +11,7 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason }) {
     mechanismStates.Intake,
     mechanismStates.Ascent,
     mechanismStates.VerticalSlides,
-    mechanismStates.Extendo,
+    mechanismStates.Webcam,
     mechanismStates.Intake,
     mechanismStates.Bucket,
     mechanismStates.Claw,
