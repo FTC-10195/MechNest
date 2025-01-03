@@ -6,7 +6,7 @@ function Navbar() {
     return (
       <header className="navbar">
       <div className="left-side">
-        <span className="header-text">CAD COOP 💀</span>
+        <span className="header-text">Mech Nest</span>
           <a
             href=" https://docs.google.com/forms/d/e/1FAIpQLSfTPRbnQ86wxPXeoHmyfvKjxQs7hOzbsfSXYbpvG3JEcj7jaw/viewform?usp=dialog"
             target="_blank"

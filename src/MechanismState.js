@@ -3,7 +3,7 @@ const mechanismStates = Object.freeze({
    NA: 'N/A',
    DriveTrain: 'Drive \n Train',
    Arm: 'Arm',
-   Intake: 'Intake',
+   Intake: 'Intake Wheel',
    Ascent: 'Ascent',
    VerticalSlides: 'Vertical Slides',
    Extendo: 'Extendo',

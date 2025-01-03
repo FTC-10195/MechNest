@@ -19,7 +19,7 @@ function App() {
       description: 'We made a bot using the GoBilda intake, vertical slides, an extendo, and two axons for a rotation mechanism', 
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://mystu29102.autodesk360.com/g/shares/SH286ddQT78850c0d8a423c01478f66d1398", cadText: "V1 Design", 
+      cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
       tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides, mechanismStates.Extendo,mechanismStates.Arm,mechanismStates.OdometryPods,mechanismStates.Intake],
       season: [seasonStates.NA,seasonStates.IntoTheDeep]
     },
@@ -28,7 +28,7 @@ function App() {
       description: 'Custom bucket, belt driven, intake', 
       imageLink: './Images/CenterStageBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://a360.co/4gyzBEx", cadText: "Center Stage Bot", 
+      cadLink: "https://a360.co/4gyzBEx", cadText: "https://a360.co/4gyzBEx", 
       tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.OdometryPods,mechanismStates.Intake],
       season: [seasonStates.NA,seasonStates.CENTERSTAGE]
     }, 
@@ -37,8 +37,8 @@ function App() {
       description: 'placeholder', 
       imageLink: './Images/PowerPlayBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://a360.co/41MRQSc", cadText: "PowerPlayBot", 
-      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.Claw,mechanismStates.Intake,mechanismStates.Arm],
+      cadLink: "https://a360.co/41MRQSc", cadText: "https://a360.co/41MRQSc", 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.Claw,mechanismStates.Arm],
       season: [seasonStates.NA,seasonStates.POWERPLAY]
     }, 
     { 
@@ -46,9 +46,18 @@ function App() {
       description: 'placeholder', 
       imageLink: './Images/FreightFrenzyBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
-      cadLink: "https://a360.co/4iROovI", cadText: "FreightFrenzyBot", 
+      cadLink: "https://a360.co/4iROovI", cadText: "https://a360.co/4iROovI", 
       tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Bucket,mechanismStates.Intake],
       season: [seasonStates.NA,seasonStates.FreightFrenzy]
+    }, 
+    { 
+      id: 5, title: '5795 POWERPLAY | Thor',
+      description: 'Early Iteration of the 5795 POWERPLAY Thor Robot. The robot involves a basic grabber mechanism mounted to a single set of vertical SAR330 linear slides. ', 
+      imageLink: './Images/POWERPLAY5795.png', 
+      teamNumber: '5795', teamName: "Back to the Drawing Board", teamLink: 'https://ecgrobotics.org//ftc5795/', 
+      cadLink: "https://a360.co/4a1pKoh", cadText: "https://a360.co/4a1pKoh", 
+      tags: [mechanismStates.NA, mechanismStates.DriveTrain, mechanismStates.VerticalSlides,mechanismStates.Claw,mechanismStates.OdometryPods],
+      season: [seasonStates.NA,seasonStates.POWERPLAY]
     }, 
   ];
 
