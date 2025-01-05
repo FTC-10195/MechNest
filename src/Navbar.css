@@ -1,5 +1,5 @@
 .App-logo {
-  height: calc(4vmin + 20px);
+  height: calc(50px);
 }
 .left-side {
   display: flex;
@@ -10,16 +10,18 @@
   gap:2vmax;
 }
 .header-text {
-  font-size: calc(4vmin);
+  height: 50px;
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
 }
 .post-button{
-  width: calc(150px);
+  text-align: center;
+  top: 10px;
+  width: 120px;
   position: relative;
   left: 20%;
-  font-size: calc(4vmin);
+  font-size: 24px;
   font-family : Helvetica;
   font-weight: bold;
   color: #ffffff;
@@ -37,8 +39,8 @@
   background-color: #020408;
   border: 1px;
   border-bottom: 1px solid #ccc;
-  height: calc(3vmax+15px);
-  width: calc(98%);
+  height: 50px;
+  width: 98%;
   justify-content: space-between;
   display: flex;
   align-items: center;
