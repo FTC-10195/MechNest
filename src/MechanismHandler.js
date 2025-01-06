@@ -44,8 +44,8 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason, isM
         <label htmlFor="dropdown">Mechanisms:</label>
         <select 
          className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
-          id="dropdown"
-          name="dropdown"
+          id="dropdown1"
+          name="dropdown1"
           value={selectedTags || ''}
           onChange={handleTagChange}  
         >
@@ -60,8 +60,8 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason, isM
         <label htmlFor="dropdown">Season:</label>
         <select 
           className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
-          id="dropdown"
-          name="dropdown"
+          id="dropdown2"
+          name="dropdown2"
           value={selectedSeason || ''}
           onChange={handleSeasonChange}  
         >
