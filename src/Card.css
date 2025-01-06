@@ -117,7 +117,7 @@ background-position: center;
   overflow-wrap: break-word; /* Modern property */  
   max-width: 100vmax; 
     font-size:16px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   font-weight: bold;
   color: #ffffff;
 }
@@ -130,7 +130,7 @@ background-position: center;
   line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */
   max-height: 3em;       
     font-size:14px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   color: #ffffff;
 }
 .card-description.mobile{
@@ -141,7 +141,7 @@ background-position: center;
   -webkit-line-clamp: 2;          /* Specifies the number of lines to display */           /* Optional: Adjust line-height for spacing between lines */
   max-height: 3em;       
     font-size:12px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   color: #ffffff;
 }
 .card-title.computer{
@@ -149,7 +149,7 @@ background-position: center;
   top: 10px;
   position: relative;
   font-size: 20px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 }
@@ -158,19 +158,19 @@ color: #ffffff;
   top: 10px;
   position: relative;
   font-size: 16px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 }
 .card-fusion.computer{
   font-size: 12px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #61dafb;
 }
 .card-fusion.mobile{
   font-size: 12px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #61dafb;
 }
@@ -182,7 +182,7 @@ color: #61dafb;
   right: 0;
   bottom: 0;
   font-size:12px ;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 margin: 1px;
@@ -196,7 +196,7 @@ color: #61dafb;
   right: 1vmin;
   bottom: 0;
   font-size:9px ;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 margin: 1px;
@@ -210,7 +210,7 @@ color: #61dafb;
   place-content: center;
   left: -10px;
     bottom: 0;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 overflow-y: scroll;
@@ -224,14 +224,14 @@ overflow-y: scroll;
   left: -10px;
     bottom: -10px;
   margin: .2vmin;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 overflow-y: scroll;
 }
 .tag-container{
   position: absolute;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 gap: 3px;
@@ -284,7 +284,7 @@ overflow-y: scroll;
   word-wrap: break-word;
   position: absolute;
   font-size:14px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 left: 0;
@@ -295,7 +295,7 @@ margin: 5px;
   word-wrap: break-word;
   position: absolute;
   font-size:11px;
-font-family : Helvetica;
+font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 left: 0;

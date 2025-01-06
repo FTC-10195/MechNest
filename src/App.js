@@ -10,7 +10,7 @@ import './index.css';
 function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedFullscreen, setFullScreen] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);;
   const [selectedTags, setTag] = useState('N/A'); 
   const [selectedSeason, setSeason] = useState('N/A'); 
   const preFilteredCards = [

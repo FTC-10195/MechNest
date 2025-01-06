@@ -9,13 +9,13 @@
 }
 .header.computer {
   height: 50px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   font-weight: bold;
   color: #ffffff;
 }
 .header.mobile {
   height: 50px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   font-weight: bold;
   color: #ffffff;
 }
@@ -26,7 +26,7 @@
   position: relative;
   left: 20%;
   font-size: 24px;
-  font-family : Helvetica;
+  font-family : sans-serif;
   font-weight: bold;
   color: #ffffff;
   border: 1px solid #ccc;
@@ -40,6 +40,7 @@
   background-color: #eb6a25; 
 }
 .navbar {
+  font-family : sans-serif;
   display: flex;
   position: sticky;
   top: 0;

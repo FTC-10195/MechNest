@@ -28,7 +28,6 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason, isM
    seasonStates.RoverRuckus,
    seasonStates.RelicRevory,
    seasonStates.VelocityVortex,
-   seasonStates.Outreach
   ];
 
   const handleTagChange = (event) => {
