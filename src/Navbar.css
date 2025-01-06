@@ -1,15 +1,19 @@
 .App-logo {
-  height: calc(50px);
+  position: absolute;
+  right: 0;
+  height: 50px;
 }
 .left-side {
   display: flex;
   gap: 20px;
 }
-.right-side{
-  display: flex;
-  gap:2vmax;
+.header.computer {
+  height: 50px;
+  font-family : Helvetica;
+  font-weight: bold;
+  color: #ffffff;
 }
-.header-text {
+.header.mobile {
   height: 50px;
   font-family : Helvetica;
   font-weight: bold;
@@ -35,18 +39,13 @@
 .post-button:hover {
   background-color: #eb6a25; 
 }
-.navbar{
-  background-color: #020408;
-  border: 1px;
-  border-bottom: 1px solid #ccc;
-  height: 50px;
-  width: 98%;
-  justify-content: space-between;
+.navbar {
   display: flex;
-  align-items: center;
-  padding-left: 2%;
-  top: 0px;
-  left: 0px;
   position: sticky;
+  top: 0;
+  left: 0;
+  height: 50px;
   z-index: 10;
+  background-color: #020408;
+  border-bottom: 1px solid #ccc;
 }

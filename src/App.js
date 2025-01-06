@@ -10,13 +10,13 @@ import './index.css';
 function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedFullscreen, setFullScreen] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);;
   const [selectedTags, setTag] = useState('N/A'); 
   const [selectedSeason, setSeason] = useState('N/A'); 
   const preFilteredCards = [
     { 
       id: 1, title: '🗣️SOAR (V1)🗣️',
-      description: 'We made a bot using the GoBilda intake, vertical slides, an extendo, and two axons for a rotation mechanism', 
+      description: '10195 first bot made for into the deep, was able to score high bucket but not chamber', 
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
@@ -25,7 +25,7 @@ function App() {
     },
     { 
       id: 2, title: '🌙Otto the Owl🦉',
-      description: 'Custom bucket, belt driven, intake', 
+      description: '10195 bot made for Center Stage, uses a custom 3D printed bucket', 
       imageLink: './Images/CenterStageBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4gyzBEx", cadText: "https://a360.co/4gyzBEx", 
@@ -34,7 +34,7 @@ function App() {
     }, 
     { 
       id: 3, title: '💪Power💪',
-      description: 'placeholder', 
+      description: "10195 bot for POWERPLAY. Don't know why the CAD file is messed up", 
       imageLink: './Images/PowerPlayBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/41MRQSc", cadText: "https://a360.co/41MRQSc", 
@@ -43,7 +43,7 @@ function App() {
     }, 
     { 
       id: 4, title: '🚂Hoot Hoot🚂',
-      description: 'placeholder', 
+      description: '10195 bot for Freight Frenzy, uses a custom intake and custom 3D printed bucket', 
       imageLink: './Images/FreightFrenzyBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4iROovI", cadText: "https://a360.co/4iROovI", 
@@ -92,8 +92,8 @@ function App() {
   return (
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
       <title>Mech Nest</title>
-      <Navbar />
-      <MechanismHandler selectedTags={selectedTags} setTag={setTag} selectedSeason = {selectedSeason} setSeason = {setSeason} />
+      <Navbar other = {true} isMobile ={isMobile} />
+      <MechanismHandler selectedTags={selectedTags} setTag={setTag} selectedSeason = {selectedSeason} setSeason = {setSeason} isMobile = {isMobile} />
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
           <Card

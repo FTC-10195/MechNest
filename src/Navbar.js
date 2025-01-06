@@ -1,12 +1,13 @@
+import React from 'react';
 import { useState } from 'react';
 import './Navbar.css';
 import './index.css';
 //Use the 'App.css to give color, shape, size, style, etc
-function Navbar() {
+function Navbar({isMobile}) {
     return (
       <header className="navbar">
       <div className="left-side">
-        <span className="header-text"><img src={'./Images/MechNestText.png'} alt="logo" className = "App-logo"/></span>
+        <span  className="header-text"><img src={isMobile ? './Images/MechNestLogo.png' : './Images/MechNestText.png'} className={`header ${isMobile ? 'mobile' : 'computer'}`}/></span>
           <a
             href=" https://docs.google.com/forms/d/e/1FAIpQLSfTPRbnQ86wxPXeoHmyfvKjxQs7hOzbsfSXYbpvG3JEcj7jaw/viewform?usp=dialog"
             target="_blank"

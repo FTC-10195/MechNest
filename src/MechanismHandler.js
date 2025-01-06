@@ -3,7 +3,7 @@ import './Tags.css';
 import './index.css';
 import mechanismStates from './MechanismState';
 import seasonStates from './SeasonStates';
-function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason }) {
+function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason, isMobile}) {
   const mechanismList = [
     mechanismStates.NA,
     mechanismStates.DriveTrain,
@@ -39,11 +39,11 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason }) {
   };
 
   return (
-    <div className="tags-search-area">
+    <div className={`tags-search-area ${isMobile ? 'mobile' : 'computer'}`}>
       <span className="tags-search-text">
         <label htmlFor="dropdown">Mechanisms:</label>
         <select 
-          className="tags-dropdown"
+         className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
           id="dropdown"
           name="dropdown"
           value={selectedTags || ''}
@@ -59,7 +59,7 @@ function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason }) {
       <span className="tags-search-text">
         <label htmlFor="dropdown">Season:</label>
         <select 
-          className="tags-dropdown"
+          className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
           id="dropdown"
           name="dropdown"
           value={selectedSeason || ''}

@@ -1,7 +1,7 @@
 .card-container.computer{
     display: grid;
-    gap: 3vmax;
-    padding: 3vw;
+    gap: 20px;
+    padding: 30px;
     overflow-x: auto;
   justify-content: center;
   align-items: center;
@@ -14,8 +14,8 @@
 }
 .card-container.mobile{
   display: grid;
-  gap: 3vmax;
-  padding: 3vw;
+  gap: 20px;
+  padding: 15px;
   overflow-x: auto;
 justify-content: center;
 align-items: center;
