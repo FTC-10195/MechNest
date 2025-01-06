@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import './Navbar.css';
 import './index.css';
 //Use the 'App.css to give color, shape, size, style, etc
@@ -13,8 +12,8 @@ function Navbar({isMobile}) {
             target="_blank"
             rel="noopener noreferrer"
           >
-        <span className="post-button">Post</span>
-        </a>
+          <span className="post-button"><img src={'./Images/googleformslogo.png'} className="forms-icon"/>Post</span>
+          </a>
       </div>
         <a
           href="https://ecgrobotics.org/ftc10195/"
