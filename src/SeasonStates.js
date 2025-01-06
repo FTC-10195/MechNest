@@ -5,7 +5,7 @@ const seasonStates = Object.freeze({
    CENTERSTAGE: 'CENTERSTAGE',
    POWERPLAY: 'POWERPLAY',
    FreightFrenzy: 'FREIGHT FRENZY',
-  UltimateGoal: 'ULTIMaTE GOAL',
+  UltimateGoal: 'ULTIMATE GOAL',
   SkyStone: 'SKYSTONE',
   RoverRuckus: 'ROVER RUCKUS',
   RelicRevory: 'RELIC RECOVERY',
