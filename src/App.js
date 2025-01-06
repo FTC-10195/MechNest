@@ -16,7 +16,7 @@ function App() {
   const preFilteredCards = [
     { 
       id: 1, title: '🗣️SOAR (V1)🗣️',
-      description: '10195 first bot made for into the deep, was able to score high bucket but not chamber', 
+      description: 'Mechanum chasis ( 2 belt drive and 2 direct driven), Misumi Vertical slide system, Rotating arm powered by axon maxs, Extendo system power by axon mini, Wrist and intake powered by gobilda servos and gecko wheel, 3 Odometry pods Max Score: 63 points solo Max Auto: 16 points', 
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
@@ -25,7 +25,7 @@ function App() {
     },
     { 
       id: 2, title: '🌙Otto the Owl🦉',
-      description: '10195 bot made for Center Stage, uses a custom 3D printed bucket', 
+      description: 'Custom DT, All belt powered, Aluminum Plates, Transfer System, Servo Chained powered intake using flywheels, Outtake powered by axon minis, rotation mech powered by axon maxs', 
       imageLink: './Images/CenterStageBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4gyzBEx", cadText: "https://a360.co/4gyzBEx", 
@@ -34,7 +34,7 @@ function App() {
     }, 
     { 
       id: 3, title: '💪Power💪',
-      description: "10195 bot for POWERPLAY. Don't know why the CAD file is messed up", 
+      description: "Belted DT, Virtual Fourbar, Linkage Claw, Virtical Slides", 
       imageLink: './Images/PowerPlayBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/41MRQSc", cadText: "https://a360.co/41MRQSc", 
@@ -43,7 +43,7 @@ function App() {
     }, 
     { 
       id: 4, title: '🚂Hoot Hoot🚂',
-      description: '10195 bot for Freight Frenzy, uses a custom intake and custom 3D printed bucket', 
+      description: 'Bevel Driven DT, Transfer system, flywheel intake, bucket outtake powered by servo', 
       imageLink: './Images/FreightFrenzyBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4iROovI", cadText: "https://a360.co/4iROovI", 
