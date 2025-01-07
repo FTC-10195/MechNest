@@ -127,8 +127,8 @@ height: 100px;
 .card-text-container.mobile{
   position: absolute;
   top: 20px;
-  left: 110px;
-  width: 138px;
+  left: 90px;
+  width: 158px;
   height: 100px;
 }
 .card-text-container.fullscreen{
@@ -165,9 +165,9 @@ height: 100px;
   display: -webkit-box;           /* Makes the element behave like a box */
   -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
   overflow: hidden;               /* Hides overflowed content */
-  -webkit-line-clamp: 3;          /* Specifies the number of lines to display */
-  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:12px;
+  -webkit-line-clamp: 6;          /* Specifies the number of lines to display */
+  line-height: 1em;             /* Optional: Adjust line-height for spacing between lines */      
+    font-size:11px;
   font-family : sans-serif;
   color: #ffffff;
 }
@@ -267,7 +267,7 @@ color: #ffffff;
 }
 .tag-container-large.fullscreen{
   position: absolute;
-  bottom: 100px;
+  bottom: 10vh;
   left: 50%; 
   transform: translate(-50%,0);
   width: 90%;
@@ -308,7 +308,8 @@ color: #ffffff;
   cursor: pointer;
   font-family : sans-serif;
   font-style: normal;
-  height:  calc(11px+1vmin);
+  height: 6vmin;
+  min-height:  25px;
   width: 12vmin;
   min-width: 45px;
   place-content: center;
