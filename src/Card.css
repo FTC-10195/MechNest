@@ -222,7 +222,6 @@ color: #ffffff;
 .card-teamNumber.fullscreen{
   height: 50px;
   max-width: 80%;
-  overflow: hidden;  
   text-align: center;
     font-size:calc(11px + 3vmin);
     display: inline;          /* Makes the element behave like a box */
@@ -268,7 +267,7 @@ color: #ffffff;
 }
 .tag-container-large.fullscreen{
   position: absolute;
-  bottom: 30vmin;
+  bottom: 100px;
   left: 50%; 
   transform: translate(-50%,0);
   width: 90%;
