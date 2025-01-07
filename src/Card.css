@@ -243,6 +243,9 @@ overflow-y: scroll;
   flex-wrap: wrap;
 }
 .tag.computer{
+  cursor: pointer;
+  font-family : sans-serif;
+  font-style: normal;
   height: 28px;
   width: 45px;
   place-content: center;
@@ -260,8 +263,12 @@ overflow-y: scroll;
   display: block;
   line-height: 1em; /* a */
   max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+  transition: transform 0.2s;
 }
 .tag.mobile{
+  cursor: pointer;
+  font-style: normal;
+  font-family : sans-serif;
   height: 22px;
   width: 38px;
   place-content: center;
@@ -279,6 +286,7 @@ overflow-y: scroll;
   display: block;
   line-height: 1em; /* a */
   max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+  transition: transform 0.2s;
 }
 .season.computer{
   word-wrap: break-word;
@@ -305,4 +313,7 @@ margin: 5px;
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
+}
+.tag:hover {
+  transform: scale(1.05);
 }
