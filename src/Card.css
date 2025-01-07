@@ -229,6 +229,19 @@ font-weight: bold;
 color: #ffffff;
 overflow-y: scroll;
 }
+.tag-container-large.fullscreen{
+  font-size:  14px;
+  width:  250px;
+    height:250px;
+  position: absolute;
+  place-content: center;
+  left: -0px;
+    bottom: 10px;
+font-family : sans-serif;
+font-weight: bold;
+color: #ffffff;
+overflow-y: scroll;
+}
 .tag-container{
   position: absolute;
 font-family : sans-serif;
@@ -250,6 +263,29 @@ overflow-y: scroll;
   width: 45px;
   place-content: center;
   font-size:  9px;
+  position: relative;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-style: solid;
+  border-radius: 4px;
+  display: inline-block;  
+  background-color: #1d1d1c; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+  transition: transform 0.2s;
+}
+.tag.fullscreen{
+  cursor: pointer;
+  font-family : sans-serif;
+  font-style: normal;
+  height: 35px;
+  width: 70px;
+  place-content: center;
+  font-size:  12px;
   position: relative;
   text-align: center;
   border: 1px solid #ccc;

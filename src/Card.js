@@ -36,10 +36,10 @@ function getCardType(){
             >
                  <span className={`card-teamNumber ${isMobile ? 'mobile' : 'computer'}`}>{combinedNameNumber}</span>
             </a>
-            <div className={`tag-container-large ${isMobile ? 'mobile' : 'computer'}`}>
+            <div className={`tag-container-large ${getCardType()}`}>
                  <div className="tag-container">
                     {tags.map((tag,index) => (
-                        <li key = {index} className={`tag ${isMobile ? 'mobile' : 'computer'}`}>
+                        <li key = {index} className={`tag ${getCardType()}`}>
                             {tag}
                         </li>
                     ))}
