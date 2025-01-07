@@ -32,9 +32,16 @@
   border: 1px solid #ccc;
   border-style: solid;
   border-radius: 1vmin;
-  display: inline-block;  
+  display: flex;  
   background-color: #D15F22; 
   transition: transform 0.2s;
+  gap: 0.5rem;
+  align-items: center;
+}
+.post-button img.forms-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding-left: 0.5rem;
 }
 .post-button:hover {
   background-color: #eb6a25; 
