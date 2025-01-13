@@ -1,18 +1,4 @@
-.card-container.computer{
-    display: grid;
-    gap: 20px;
-    padding: 30px;
-    overflow-x: auto;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  background-size: cover;
-  background-position: center;
-    background-color: #020408;
-    background-position: center;
-}
-.card-container.mobile{
+.card-container{
   display: grid;
   gap: 20px;
   padding: 15px;
@@ -24,22 +10,15 @@ flex-wrap: wrap;
 background-size: cover;
 background-position: center;
   background-color: #020408;
-  background-position: center;
 }
-.card.computer {
-    border-radius: 11px;
-    position: relative;
-    width: 350px;
-    height: 250px;
-    background-color: #151515;
-    transition: transform 0.2s;
-    box-sizing: border-box;
-}
-.card.mobile {
+.card{
   border-radius: 11px;
     position: relative;
-    width: 250px;
-    height: 150px;
+    width: 75vw;
+    max-width: 350px;
+    height: 200px;
+    padding: 0 25px; /* Spacing between card content and edges */
+  box-sizing: border-box;
     background-color: #151515;
     transition: transform 0.2s;
     box-sizing: border-box;
@@ -48,25 +27,23 @@ background-position: center;
     transform: scale(1.15);
 }
 .card:hover {
- /* transform: scale(1.05); */
  background-color: #272727;
 }
-.card.fullscreen {
+.card.fullscreen{
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  z-index: 99999;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    margin: 0;
-    border-radius: 0;
+    max-width: 100%;
+    height: 100vh;
+  box-sizing: border-box;
     background-color: #151515;
-  transition: transform 0.2s;
-    box-shadow: none;
-    z-index: 9999;
-    overflow: auto;
-    transform: none;
-  }
-  .card.fullscreen .card-content {
+    transition: transform 0.2s;
+    box-sizing: border-box;
+}
+  .card.fullscreen.card-content {
     padding: 40px;
   }
 .card-details {
@@ -74,29 +51,22 @@ background-position: center;
     padding: 20px;
     border: 1px solid #ccc;
 }
-.fullscreen-button.computer{
-    cursor: pointer;
-    position: absolute;
-    height: 20px;
-    right: 5px;
-    top: 5px;
-    transition: transform 0.2s;
-}
-.fullscreen-button.mobile{
+.fullscreen-button{
   cursor: pointer;
   position: absolute;
-  height: 20px;
+  height: 4vw;
+  max-height: 15px;
   right: 5px;
   top: 5px;
   transition: transform 0.2s;
 }
-.card-image.computer{
+.card-image{
   position: absolute;
   display: flex;
-  top: 40px;
-  left: 25px;
-  width:  125px;
-  height: 125px;
+  top: 30px;
+  left: 10px;
+  width:  100px;
+  height: 100px;
   object-fit: cover;
 }
 .card-image.fullscreen{
@@ -106,38 +76,29 @@ background-position: center;
   left: 50%;
   transform: translate(-50%,0);
   height: 30vh;
+  width: 30vh;
   object-fit: contain;
 }
-.card-image.mobile{
+.card-text-container{
   position: absolute;
-  display: flex;
-  top: 20px;
-  left: 10px;
-  width:  80px;
-  height: 80px;
-  object-fit: cover;
-}
-.card-text-container.computer{
-position: absolute;
-top: 40px;
-left: 150px;
-width: 200px;
-height: 100px;
-}
-.card-text-container.mobile{
-  position: absolute;
-  top: 20px;
-  left: 90px;
-  width: 158px;
+  top: 30px;
+  margin-left:  90px; /* Reserve space for image (100px width) */
+  text-align: center; /* Center text horizontally within the text container */
+  width: calc(100% - 100px - 25px); /* Ensure it fills the space between the image and card's right padding */
+  color: white; /* Optional: Text color for visibility */
   height: 100px;
 }
 .card-text-container.fullscreen{
   position: absolute;
   top: calc(50px + 30vh + 10px);
+  margin: 0;
   left: 50%;
   transform: translate(-50%,0);
-  width: 90%;
-  }
+  text-align: center; /* Center text horizontally within the text container */
+  width: calc(90vw); /* Ensure it fills the space between the image and card's right padding */
+  color: white; /* Optional: Text color for visibility */
+  height: auto;
+}
 .card-description.fullscreen{
   margin: 12px;
   display: -webkit-box;           /* Makes the element behave like a box */
@@ -149,40 +110,21 @@ height: 100px;
   font-family : sans-serif;
   color: #ffffff;
 }
-.card-description.computer{
-  margin: 12px;
-  display: -webkit-box;           /* Makes the element behave like a box */
-  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
-  overflow: hidden;               /* Hides overflowed content */
-  -webkit-line-clamp: 5;          /* Specifies the number of lines to display */
-  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:14px;
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.card-description.mobile{
+.card-description{
   margin: 6px;
   display: -webkit-box;           /* Makes the element behave like a box */
   -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
   overflow: hidden;               /* Hides overflowed content */
   -webkit-line-clamp: 6;          /* Specifies the number of lines to display */
-  line-height: 1em;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:11px;
+  line-height: 14px;             /* Optional: Adjust line-height for spacing between lines */      
+    font-size:14px;
   font-family : sans-serif;
   color: #ffffff;
 }
-.card-title.computer{
-  height: 20px;
-  position: relative;
-  font-size: 20px;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-}
-.card-title.mobile{
+.card-title{
   height: 10px;
   position: relative;
-  font-size: 14px;
+  font-size: 16px;
 font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
@@ -195,27 +137,15 @@ font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
 }
-.card-teamNumber.computer{
-  display: inline;
-  height: 20px;
-  max-width: 280px;
-  overflow: hidden;  
-  text-align: center;
+.card-teamNumber{
+  margin: 6px;
+  display: -webkit-box;           /* Makes the element behave like a box */
+  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
+  overflow: hidden;               /* Hides overflowed content */
+  -webkit-line-clamp: 1;          /* Specifies the number of lines to display */
+  line-height: 1.1em;             /* Optional: Adjust line-height for spacing between lines */      
     font-size:16px;
-    margin: 0 auto; /* Center the container horizontally */
-    font-weight: Bold;
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.card-teamNumber.mobile{
-  display: inline;
-  height: 16px;
-  max-width: 230px;
-  overflow: hidden;  
-  text-align: center;
-    font-size:14px;
-    margin: 0 auto; /* Center the container horizontally */
-    font-weight: Bold;
+    font-weight: bold;
   font-family : sans-serif;
   color: #ffffff;
 }
@@ -225,45 +155,25 @@ color: #ffffff;
   text-align: center;
     font-size:calc(11px + 3vmin);
     display: inline;          /* Makes the element behave like a box */
-  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
-  overflow-y: scroll;               /* Hides overflowed content */
-  -webkit-line-clamp: 2;          /* Specifies the number of lines to display */
     margin: 0 auto; /* Center the container horizontally */
     font-weight: Bold;
   font-family : sans-serif;
   color: #ffffff;
 }
-.tag-container-large.computer{
-  width:  280px;
+.tag-container-large{
+  width:  calc(100%-10px);
   justify-content: start;
     height:60px;
   position: absolute;
-  left: 5px;
+  left: 10px;
     bottom: 0;
 overflow-y: scroll;
 font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
-
   display: flex;
   flex-wrap: wrap;
   gap: 2px;
-}
-.tag-container-large.mobile{
-  width:  200px;
-  justify-content: start;
-    height:50px;
-  position: absolute;
-  left: 5px;
-    bottom: -5px;
-overflow-y: scroll;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px,10px;
 }
 .tag-container-large.fullscreen{
   position: absolute;
@@ -281,29 +191,6 @@ color: #ffffff;
   flex-wrap: wrap;
   gap: calc(.5vmin + 2px);
 }
-.tag.computer{
-  cursor: pointer;
-  font-family : sans-serif;
-  font-style: normal;
-  height: 28px;
-  width: 45px;
-  place-content: center;
-  font-size:  9px;
-  position: relative;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-style: solid;
-  border-radius: 4px;
-  display: inline-block;  
-  background-color: #1d1d1c; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: block;
-  line-height: 1em; /* a */
-  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
-  transition: transform 0.2s;
-}
 .tag.fullscreen{
   cursor: pointer;
   font-family : sans-serif;
@@ -316,11 +203,9 @@ color: #ffffff;
   font-size:  calc(9px + .5vmin);
   position: relative;
   text-align: center;
-  border: 1px solid #ccc;
-  border-style: solid;
   border-radius: 4px;
   display: inline-block;  
-  background-color: #1d1d1c; 
+  background-color: #30302e; 
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -329,21 +214,20 @@ color: #ffffff;
   max-height: 2em; /* a x number of line to show (ex : 2 line)  */
   transition: transform 0.2s;
 }
-.tag.mobile{
+.tag{
   cursor: pointer;
   font-family : sans-serif;
   font-style: normal;
-  height: 22px;
-  width: 35px;
+  height: 30px;
+  width: calc(15%);
+  min-width: 40px;
   place-content: center;
-  font-size:  8px;
+  font-size:  11px;
   position: relative;
   text-align: center;
-  border: 1px solid #ccc;
-  border-style: solid;
   border-radius: 4px;
   display: inline-block;  
-  background-color: #1d1d1c; 
+  background-color: #30302e; 
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -351,17 +235,6 @@ color: #ffffff;
   line-height: 1em; /* a */
   max-height: 2em; /* a x number of line to show (ex : 2 line)  */
   transition: transform 0.2s;
-}
-.season.computer{
-  word-wrap: break-word;
-  position: absolute;
-  font-size:11px;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-right: 0;
-bottom: 0;
-margin: 5px;
 }
 .season.fullscreen{
   word-wrap: break-word;
@@ -374,10 +247,10 @@ right: 0;
 bottom: 0;
 margin: 5px;
 }
-.season.mobile{
+.season{
   word-wrap: break-word;
   position: absolute;
-  font-size:9px;
+  font-size:11px;
 font-family : sans-serif;
 font-weight: bold;
 color: #ffffff;
@@ -390,5 +263,5 @@ margin: 5px;
   background: transparent; /* make scrollbar transparent */
 }
 .tag:hover {
-  background-color: #2f2f2f;
+  background-color: #fe9144;
 }

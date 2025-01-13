@@ -1,21 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import './Card.css';
-function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile,season,onClick }) {
-    const [isFullscreen, setIsFullscreen] = useState(false);
-    const handleToggleFullscreen = () => {
-      setIsFullscreen(!isFullscreen);
-    };
+function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile,season,onClick,isFullscreen}) {
     const combinedNameNumber = "#" + teamNumber+ " - " + teamName;
 function getCardType(){
         if (isFullscreen){
-            return 'fullscreen'
+            return 'fullscreen';
         }
-        if (isMobile){
-            return 'mobile'
-        }else {
-            return 'computer'
-        }
+        return '';
     }
     return (
         <div className={`card ${getCardType()}`}>
@@ -35,10 +27,10 @@ function getCardType(){
             </a>
             <div className = {`card-text-container ${getCardType()}`}>
                 <div className = {`card-title ${getCardType()}`}>{title}</div>
-                <p className = {`card-description ${getCardType()}`}>{description}</p>
+                <p className = { `card-description ${getCardType()}`}> {description}</p>
             </div>
             <div className = {`season ${getCardType()}`}> {season} </div>
-            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={handleToggleFullscreen}/>
+            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={onClick}/>
             <div className={`tag-container-large ${getCardType()}`}>
                     {tags.map((tag,index) => (
                         <li key = {index} className={`tag ${getCardType()}`}>

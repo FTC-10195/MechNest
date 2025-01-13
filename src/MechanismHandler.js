@@ -1,78 +1,38 @@
-import { useState } from 'react';
-import './Tags.css';
-import './index.css';
-import mechanismStates from './MechanismState';
-import seasonStates from './SeasonStates';
-function MechanismHandler({ selectedTags, setTag, selectedSeason, setSeason, isMobile}) {
-  const mechanismList = [
-    mechanismStates.NA,
-    mechanismStates.DriveTrain,
-    mechanismStates.Arm,
-    mechanismStates.Intake,
-    mechanismStates.Ascent,
-    mechanismStates.VerticalSlides,
-    mechanismStates.Webcam,
-    mechanismStates.Intake,
-    mechanismStates.Bucket,
-    mechanismStates.Claw,
-    mechanismStates.WholeRobot
-  ];
-  const seasonsList = [
-   seasonStates.NA,
-   seasonStates.IntoTheDeep,
-   seasonStates.CENTERSTAGE,
-   seasonStates.POWERPLAY,
-   seasonStates.FreightFrenzy,
-   seasonStates.UltimateGoal,
-   seasonStates.SkyStone,
-   seasonStates.RoverRuckus,
-   seasonStates.RelicRevory,
-   seasonStates.VelocityVortex,
-  ];
-
-  const handleTagChange = (event) => {
-    setTag(event.target.value);
+import React, { useState } from "react";
+import "./Tags.css";
+function App(TagsList) {
+  const [frames, setFrames] = useState(false); // State to keep track of frames
+  const handleAddFrame = () => {
+    // Add a new frame with a unique ID
+    setFrames(!frames);
   };
-  const handleSeasonChange = (event) => {
-    setSeason(event.target.value);
-  };
-
+  const Tags = TagsList['TagsList']
+  const Mechanisms = Tags['Mechanisms']
+  const Seasons = Tags['Seasons']
   return (
-    <div className={`tags-search-area ${isMobile ? 'mobile' : 'computer'}`}>
-      <span className="tags-search-text">
-        <label htmlFor="dropdown">Mechanisms:</label>
-        <select 
-         className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
-          id="dropdown1"
-          name="dropdown1"
-          value={selectedTags || ''}
-          onChange={handleTagChange}  
-        >
-          {mechanismList.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </span>
-      <span className="tags-search-text">
-        <label htmlFor="dropdown">Season:</label>
-        <select 
-          className={`tags-dropdown ${isMobile ? 'mobile' : 'computer'}`}
-          id="dropdown2"
-          name="dropdown2"
-          value={selectedSeason || ''}
-          onChange={handleSeasonChange}  
-        >
-          {seasonsList.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </span>
+    <div className="App">
+      <button className="search-button" onClick={handleAddFrame} ><img src={'./Images/MagnifyingGlass.png'} className="forms-icon"/> {frames ? '<' : '>'}</button>
+        <div className={`frame ${frames ? 'On' : 'Off'}`}>
+          <div className={'frame-title'}>Tags </div>
+            <div className={'tag-container'}>
+              <div className={'tag-title'}>Mechanisms: </div>  
+              {Mechanisms.map((tag,index) => (
+                <li key = {index} className={`tag`}>
+                  {tag}
+                </li>
+              ))}
+              </div>
+              <div className={'tag-container'}>
+              <div className={'tag-title'}> Seasons: </div>  
+              {Seasons.map((tag,index) => (
+                <li key = {index} className={`tag`}>
+                  {tag}
+                </li>
+              ))}
+              </div>
+        </div>
     </div>
   );
 }
 
-export default MechanismHandler;
+export default App;
