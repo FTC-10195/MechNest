@@ -29,7 +29,7 @@ function getCardType(){
                 <div className = {`card-title ${getCardType()}`}>{title}</div>
                 <p className = { `card-description ${getCardType()}`}> {description}</p>
             </div>
-            <div className = {`season ${getCardType()}`}> {season} </div>
+            <div className = {`season ${getCardType()}`}> {season[1]} </div>
             <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={onClick}/>
             <div className={`tag-container-large ${getCardType()}`}>
                     {tags.map((tag,index) => (

@@ -9,8 +9,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedFullscreen, setFullScreen] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);;
-  const [selectedTags, setTag] = useState('N/A'); 
-  const [selectedSeason, setSeason] = useState('N/A'); 
+  const [selectedTags, setTags] = useState(['N/A']); 
+  const [Season, setSeason] = useState('N/A');
   const TagsStates = Object.freeze({
     NA: 'N/A',
     //Seasons
@@ -27,7 +27,7 @@ function App() {
     DriveTrain: 'Drivetrain',
     Arm: 'Arm',
     Intake: 'Intake Wheel',
-    Ascent: 'Ascent/Climb',
+    Ascent: 'Ascent',
     VerticalSlides: 'Vertical Slides',
     Claw:'Claw',
     Bucket: 'Bucket',
@@ -95,7 +95,7 @@ function App() {
     "Seasons" : seasonsList,
     "Mechanisms": mechanismList,
     "Sensors" : sensorsList,
-    "DriveType:" : driveList,
+    "DriveType" : driveList,
     "Plates" : platesList
   });
   const preFilteredCards = [
@@ -145,7 +145,9 @@ function App() {
       season: [TagsStates.NA,TagsStates.POWERPLAY]
     }, 
   ];
-
+  const handleSelectedSeasons = (season) => {
+    setSeason(season)
+    };
   const handleCardClick = (card) => {
     if (card.id == selectedCard){
       setSelectedCard(null);
@@ -153,6 +155,9 @@ function App() {
       setSelectedCard(card.id);
     } 
     };
+    const handleSelectedTags = (tag) => {
+      setTags(tag)
+      };
   const checkDevice = () => {
     setIsMobile(window.innerWidth <= 768); // Threshold for mobile devices
   };
@@ -165,25 +170,36 @@ function App() {
     return false;
   }
   const cards = [];
-  for (let i = 0; i < preFilteredCards.length; i++) {
+ for (let i = 0; i < preFilteredCards.length; i++) {
+  var Allowed = true;
     var CARDTAGS = preFilteredCards[i].tags;
     var CARDSEASONS = preFilteredCards[i].season;
-   if (findString(CARDTAGS,selectedTags) && findString(CARDSEASONS,selectedSeason)){
+   if ((CARDSEASONS[1] == Season || Season == 'N/A')){
        cards[i] = preFilteredCards[i];
-       if (cards[i].tags[0] == "N/A"){
-        cards[i].tags = cards[i].tags.filter(item => item !== "N/A");
-       }
-       if (cards[i].season[0] == "N/A"){
-        cards[i].season = cards[i].season.filter(item => item !== "N/A");
-       }
-    }
+    }else{
+      Allowed = false;
+   }
+    var n = 0;
+    for (let index = 0; index < selectedTags.length; index++) {
+      if (findString(CARDTAGS,selectedTags[index])){
+        n = n+1
+      }
+     }
+     if (n == selectedTags.length &&  Allowed == true){
+      cards[i] = preFilteredCards[i];
+     }else{
+        if (cards[i]){
+          cards.splice(i, 1);
+        }
+     }
+     console.log(Allowed,i)
   }
   window.addEventListener('resize', checkDevice);
   return (
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
       <title>Mech Nest</title>
       <Navbar other = {true} isMobile ={isMobile} />
-      <MechanismHandler TagsList={TagsList}/>
+      <MechanismHandler Tags={TagsList} setSeason={setSeason} setTags = {setTags}/>
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
           <Card
