@@ -105,7 +105,7 @@ function App() {
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.VerticalSlides,TagsStates.Arm,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Direct,TagsStates.Belt,TagsStates.HDPE],
+      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.ColorSensor, TagsStates.VerticalSlides,TagsStates.Arm,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Direct,TagsStates.Belt,TagsStates.HDPE],
       season: [TagsStates.NA,TagsStates.IntoTheDeep]
     },
     { 
@@ -170,6 +170,7 @@ function App() {
     return false;
   }
   const cards = [];
+  var deletedCards = 0;
  for (let i = 0; i < preFilteredCards.length; i++) {
   var Allowed = true;
     var CARDTAGS = preFilteredCards[i].tags;
@@ -177,6 +178,7 @@ function App() {
    if ((CARDSEASONS[1] == Season || Season == 'N/A')){
        cards[i] = preFilteredCards[i];
     }else{
+      deletedCards = deletedCards +1;
       Allowed = false;
    }
     var n = 0;
@@ -188,11 +190,14 @@ function App() {
      if (n == selectedTags.length &&  Allowed == true){
       cards[i] = preFilteredCards[i];
      }else{
-        if (cards[i]){
-          cards.splice(i, 1);
-        }
+      if (Allowed == true){
+        deletedCards = deletedCards +1;
+      }
+      Allowed = false;
+      if (cards[i] == preFilteredCards[i]){
+        delete cards[i]
+      }
      }
-     console.log(Allowed,i)
   }
   window.addEventListener('resize', checkDevice);
   return (
@@ -200,6 +205,9 @@ function App() {
       <title>Mech Nest</title>
       <Navbar other = {true} isMobile ={isMobile} />
       <MechanismHandler Tags={TagsList} setSeason={setSeason} setTags = {setTags}/>
+      <div className={cards.length < 1 || !cards.length ||cards === undefined ||deletedCards == preFilteredCards.length ? 'App-Text' : ''}>
+      No Results Found
+      </div>
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
           <Card

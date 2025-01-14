@@ -24,6 +24,12 @@
   padding: 0;
   overflow: visible;
 }
+.App-Text{
+  text-align: center;
+  font-family: sans-serif;
+  color: white;
+  font-size: 8vw;
+}
 .App-link {
   color: #61dafb;
 }

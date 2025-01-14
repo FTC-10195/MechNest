@@ -63,10 +63,21 @@ function App({Tags,setSeason,setTags}) {
       }
     });
   };
+  const ClearTags = () => {
+    setSeason('N/A')
+    setTags(['N/A'])
+    setSelectedTag({
+      Seasons: [], // Only one tag can be selected at a time
+    Other: [],   // Multiple tags can be selected
+    })
+  }
   return (
     <div className="App">
       <button className="search-button" onClick={handleAddFrame}>
         <img src={"./Images/MagnifyingGlass.png"} className="forms-icon" /> {frames ? "<" : ">"}
+      </button>
+      <button className="clear-button" onClick = {ClearTags}>
+         Clear Tags
       </button>
       <div className={`frame ${frames ? "On" : "Off"}`}>
         <div className={"frame-title"}>Tags </div>

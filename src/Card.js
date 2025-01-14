@@ -9,6 +9,12 @@ function getCardType(){
         }
         return '';
     }
+    const filteredTags = [];
+    for (let index = 0; index < tags.length; index++) {
+        if (tags[index] != 'N/A'){
+            filteredTags[index] = tags[index]
+        }
+       }
     return (
         <div className={`card ${getCardType()}`}>
              <a
@@ -32,7 +38,7 @@ function getCardType(){
             <div className = {`season ${getCardType()}`}> {season[1]} </div>
             <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={onClick}/>
             <div className={`tag-container-large ${getCardType()}`}>
-                    {tags.map((tag,index) => (
+                    {filteredTags.map((tag,index) => (
                         <li key = {index} className={`tag ${getCardType()}`}>
                             {tag}
                         </li>
