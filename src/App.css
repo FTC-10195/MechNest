@@ -30,6 +30,9 @@
   color: white;
   font-size: 8vw;
 }
+.invisible{
+  visibility: hidden;
+}
 .App-link {
   color: #61dafb;
 }

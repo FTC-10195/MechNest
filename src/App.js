@@ -205,7 +205,7 @@ function App() {
       <title>Mech Nest</title>
       <Navbar other = {true} isMobile ={isMobile} />
       <MechanismHandler Tags={TagsList} setSeason={setSeason} setTags = {setTags}/>
-      <div className={cards.length < 1 || !cards.length ||cards === undefined ||deletedCards == preFilteredCards.length ? 'App-Text' : ''}>
+      <div className={cards.length < 1 || !cards.length ||cards === undefined ||deletedCards == preFilteredCards.length ? 'App-Text' : 'invisible'}>
       No Results Found
       </div>
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
