@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './Card.css';
-function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile,season,onClick,isFullscreen}) {
+function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile,season, drivetrain,onClick,isFullscreen}) {
     const combinedNameNumber = "#" + teamNumber+ " - " + teamName;
 function getCardType(){
         if (isFullscreen){
@@ -14,6 +14,9 @@ function getCardType(){
         if (tags[index] != 'N/A'){
             filteredTags[index] = tags[index]
         }
+       }
+       if (drivetrain[1] != "N/A"){
+        filteredTags[filteredTags.length] = drivetrain[1]
        }
     return (
         <div className={`card ${getCardType()}`}>

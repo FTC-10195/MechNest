@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import "./Tags.css";
 
-function App({Tags,setSeason,setTags}) {
+function App({Tags,setSeason,setDrive,setTags}) {
   const [frames, setFrames] = useState(false);
   const handleAddFrame = () => {
     setFrames(!frames);
   };
 
-  const TagTypeList = ["Seasons", "Mechanisms", "Sensors", "DriveType", "Plates"];
+  const TagTypeList = ["Seasons", "Mechanisms", "Sensors","Drivetrain", "DriveType", "Plates"];
 
   // Manage the selected tags for both 'Seasons' and 'Other'
   const [tagSelected, setSelectedTag] = useState({
     Seasons: [], // Only one tag can be selected at a time
+    Drivetrain: [], // Only one tag can be selected at a time
     Other: [],   // Multiple tags can be selected
   });
 
@@ -24,17 +25,6 @@ function App({Tags,setSeason,setTags}) {
       }
     }
   }
-
-  // Create a list of all tags except the ones in "Seasons"
-  const getOtherTags = () => {
-    const otherTags = [];
-    TagTypeList.forEach((type) => {
-      if (type !== "Seasons") {
-        otherTags.push(...Tags[type]);
-      }
-    });
-    return otherTags;
-  };
   const WHENCLICKED = (tag, type) => {
     setSelectedTag((prevTags) => {
       if (type === "Seasons") {
@@ -47,6 +37,17 @@ function App({Tags,setSeason,setTags}) {
           // If it's not selected, select it and keep 'Other' tags as they are
           setSeason(tag)
           return { ...prevTags, Seasons: [tag] };
+        }
+        
+      }else if (type === "Drivetrain") {
+        if (prevTags.Drivetrain.includes(tag)) {
+          // If it's already selected, remove it
+          setDrive('N/A')
+          return { ...prevTags, Drivetrain: [] };
+        } else {
+          // If it's not selected, select it and keep 'Other' tags as they are
+          setDrive(tag)
+          return { ...prevTags, Drivetrain: [tag] };
         }
       } else {
         // For 'Other', multiple tags can be selected
@@ -65,9 +66,11 @@ function App({Tags,setSeason,setTags}) {
   };
   const ClearTags = () => {
     setSeason('N/A')
+    setDrive('N/A')
     setTags(['N/A'])
     setSelectedTag({
       Seasons: [], // Only one tag can be selected at a time
+      Drivetrain: [],// Only one tag can be selected at a time
     Other: [],   // Multiple tags can be selected
     })
   }
@@ -89,8 +92,8 @@ function App({Tags,setSeason,setTags}) {
               <li
                 key={index}
                 className={`tags ${
-                  (Type === "Seasons" && tagSelected.Seasons.includes(tag)) ||
-                  (Type !== "Seasons" && tagSelected.Other.includes(tag))
+                  (Type === "Seasons" && tagSelected.Seasons.includes(tag)) || ( Type === "Drivetrain" && tagSelected.Drivetrain.includes(tag)) ||
+                  ((Type !== "Seasons" && Type !== "Drivetrain"  && tagSelected.Other.includes(tag)))
                     ? "selected-tag"
                     : ""
                 }`}

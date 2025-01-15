@@ -11,6 +11,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);;
   const [selectedTags, setTags] = useState(['N/A']); 
   const [Season, setSeason] = useState('N/A');
+  const [Drivetrain, setDrivetrain] = useState('N/A');
   const TagsStates = Object.freeze({
     NA: 'N/A',
     //Seasons
@@ -24,7 +25,6 @@ function App() {
   RelicRevory: 'RELIC RECOVERY',
   VelocityVortex: 'VELOCITY VORTEX',
     //Mechanisms
-    DriveTrain: 'Drivetrain',
     Arm: 'Arm',
     Intake: 'Intake Wheel',
     Ascent: 'Ascent',
@@ -34,11 +34,14 @@ function App() {
     Fourbar: 'Fourbar',
     Bucket: 'Bucket',
     Transfer: 'Transfer System',
-    WholeRobot:'Whole Robot',
     //Sensors
     Webcam: 'Webcam',
     OdometryPods: 'Odometry Pods',
     ColorSensor: 'Color Sensor',
+    //DriveTrain
+    Mecanum: 'Mecanum Drive',
+    Tank: 'Tank Drive',
+    Swerve: 'Swerve Drive',
     //Drive-type
     Bevel: 'Bevel Driven',
     Direct: 'Direct Driven',
@@ -60,9 +63,13 @@ function App() {
     TagsStates.RelicRevory,
     TagsStates.VelocityVortex,
   ];
+  const drivetrainList = [
+    TagsStates.Mecanum,
+    TagsStates.Tank,
+    TagsStates.Swerve
+  ];
   const mechanismList = [
     TagsStates.NA,
-    TagsStates.DriveTrain,
     TagsStates.Arm,
     TagsStates.Intake,
     TagsStates.Ascent,
@@ -71,7 +78,6 @@ function App() {
     TagsStates.Bucket,
     TagsStates.Fourbar,
     TagsStates.Transfer,
-    TagsStates.WholeRobot
   ];
   const sensorsList = [
     TagsStates.NA,
@@ -95,6 +101,7 @@ function App() {
     "Seasons" : seasonsList,
     "Mechanisms": mechanismList,
     "Sensors" : sensorsList,
+    "Drivetrain" : drivetrainList,
     "DriveType" : driveList,
     "Plates" : platesList
   });
@@ -105,8 +112,9 @@ function App() {
       imageLink: './Images/V1Bot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4d2JjMT", cadText: "https://a360.co/4d2JjMT", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.ColorSensor, TagsStates.VerticalSlides,TagsStates.Arm,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Direct,TagsStates.Belt,TagsStates.HDPE],
-      season: [TagsStates.NA,TagsStates.IntoTheDeep]
+      tags: [TagsStates.NA, TagsStates.ColorSensor, TagsStates.VerticalSlides,TagsStates.Arm,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Direct,TagsStates.Belt,TagsStates.HDPE],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     },
     { 
       id: 2, title: 'Otto the Owl',
@@ -114,8 +122,9 @@ function App() {
       imageLink: './Images/CenterStageBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4gyzBEx", cadText: "https://a360.co/4gyzBEx", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Transfer,TagsStates.Belt,TagsStates.Aluminum],
-      season: [TagsStates.NA,TagsStates.CENTERSTAGE]
+      tags: [TagsStates.NA, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.OdometryPods,TagsStates.Intake,TagsStates.Transfer,TagsStates.Belt,TagsStates.Aluminum],
+      season: [TagsStates.NA,TagsStates.CENTERSTAGE],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }, 
     { 
       id: 3, title: 'Power',
@@ -123,8 +132,9 @@ function App() {
       imageLink: './Images/PowerPlayBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/41MRQSc", cadText: "https://a360.co/41MRQSc", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.Claw,TagsStates.Arm,TagsStates.Belt,TagsStates.Fourbar,TagsStates.HDPE],
-      season: [TagsStates.NA,TagsStates.POWERPLAY]
+      tags: [TagsStates.NA, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.Claw,TagsStates.Arm,TagsStates.Belt,TagsStates.Fourbar,TagsStates.HDPE],
+      season: [TagsStates.NA,TagsStates.POWERPLAY],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }, 
     { 
       id: 4, title: 'Hoot Hoot',
@@ -132,8 +142,9 @@ function App() {
       imageLink: './Images/FreightFrenzyBot.png', 
       teamNumber: '10195', teamName: "Night Owls", teamLink: 'https://ecgrobotics.org/ftc10195/', 
       cadLink: "https://a360.co/4iROovI", cadText: "https://a360.co/4iROovI", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.Intake,TagsStates.Bevel,TagsStates.Transfer,TagsStates.HDPE],
-      season: [TagsStates.NA,TagsStates.FreightFrenzy]
+      tags: [TagsStates.NA, TagsStates.VerticalSlides,TagsStates.Bucket,TagsStates.Intake,TagsStates.Bevel,TagsStates.Transfer,TagsStates.HDPE],
+      season: [TagsStates.NA,TagsStates.FreightFrenzy],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }, 
     { 
       id: 5, title: 'Thor',
@@ -141,13 +152,11 @@ function App() {
       imageLink: './Images/POWERPLAY5795.png', 
       teamNumber: '5795', teamName: "Back to the Drawing Board", teamLink: 'https://ecgrobotics.org//ftc5795/', 
       cadLink: "https://a360.co/4a1pKoh", cadText: "https://a360.co/4a1pKoh", 
-      tags: [TagsStates.NA, TagsStates.DriveTrain, TagsStates.VerticalSlides,TagsStates.Claw,TagsStates.OdometryPods, TagsStates.Webcam,TagsStates.Belt,TagsStates.HDPE],
-      season: [TagsStates.NA,TagsStates.POWERPLAY]
+      tags: [TagsStates.NA, TagsStates.Mecanum, TagsStates.VerticalSlides,TagsStates.Claw,TagsStates.OdometryPods, TagsStates.Webcam,TagsStates.Belt,TagsStates.HDPE],
+      season: [TagsStates.NA,TagsStates.POWERPLAY],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }, 
   ];
-  const handleSelectedSeasons = (season) => {
-    setSeason(season)
-    };
   const handleCardClick = (card) => {
     if (card.id == selectedCard){
       setSelectedCard(null);
@@ -155,9 +164,6 @@ function App() {
       setSelectedCard(card.id);
     } 
     };
-    const handleSelectedTags = (tag) => {
-      setTags(tag)
-      };
   const checkDevice = () => {
     setIsMobile(window.innerWidth <= 768); // Threshold for mobile devices
   };
@@ -175,12 +181,21 @@ function App() {
   var Allowed = true;
     var CARDTAGS = preFilteredCards[i].tags;
     var CARDSEASONS = preFilteredCards[i].season;
+    var CARDDRIVE = preFilteredCards[i].drive;
    if ((CARDSEASONS[1] == Season || Season == 'N/A')){
        cards[i] = preFilteredCards[i];
     }else{
       deletedCards = deletedCards +1;
       Allowed = false;
    }
+   if ((CARDDRIVE[1] == Drivetrain || Drivetrain == 'N/A')){
+    cards[i] = preFilteredCards[i];
+ }else{
+  if (Allowed == true){
+    deletedCards = deletedCards +1;
+  }
+   Allowed = false;
+}
     var n = 0;
     for (let index = 0; index < selectedTags.length; index++) {
       if (findString(CARDTAGS,selectedTags[index])){
@@ -204,7 +219,7 @@ function App() {
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
       <title>Mech Nest</title>
       <Navbar other = {true} isMobile ={isMobile} />
-      <MechanismHandler Tags={TagsList} setSeason={setSeason} setTags = {setTags}/>
+      <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive = {setDrivetrain} setTags = {setTags}/>
       <div className={cards.length < 1 || !cards.length ||cards === undefined ||deletedCards == preFilteredCards.length ? 'App-Text' : 'invisible'}>
       No Results Found
       </div>
@@ -222,6 +237,7 @@ function App() {
             cadText={card.cadText}
             tags={card.tags}
             season = {card.season}
+            drivetrain = {card.drive}
             isMobile={isMobile}
             onClick={() => handleCardClick(card)}
             isFullscreen  = {card.id == selectedCard}
