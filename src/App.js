@@ -156,6 +156,16 @@ function App() {
       season: [TagsStates.NA,TagsStates.POWERPLAY],
       drive: [TagsStates.NA,TagsStates.Mecanum]
     }, 
+    { 
+      id: 6, title: 'Rush V2.5',
+      description: "Worse version of Saket's Intake, Horizantle and Verticle Slides, Wacky Claw Outake, Mechnum Drivetrain.", 
+      imageLink: './Images/INTOTHEDEEP16488.png', 
+      teamNumber: '16488', teamName: "RAM ROBOTICS", teamLink: '', 
+      cadLink: "https://cad.onshape.com/documents/c781844ef4f513717ffb038a/w/b986247c183ac845df1d4956/e/530d7765ef11eea33804886b?renderMode=0&uiState=678adfd49bc48a236ca83875", cadText: "https://a360.co/4a1pKoh", 
+      tags: [TagsStates.NA, TagsStates.VerticalSlides,TagsStates.Claw,TagsStates.OdometryPods,TagsStates.Belt,TagsStates.Aluminum],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
+    }
   ];
   const handleCardClick = (card) => {
     if (card.id == selectedCard){
