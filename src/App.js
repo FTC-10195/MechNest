@@ -165,6 +165,16 @@ function App() {
       tags: [TagsStates.NA, TagsStates.VerticalSlides,TagsStates.Claw,TagsStates.OdometryPods,TagsStates.Belt,TagsStates.Aluminum],
       season: [TagsStates.NA,TagsStates.IntoTheDeep],
       drive: [TagsStates.NA,TagsStates.Mecanum]
+    }, 
+    { 
+      id: 7, title: 'Omniman',
+      description: "Vertical slide, rack and pinion, passive specimen claw, adjustable angle viper rail arm, fully custom active intake, derlin construction", 
+      imageLink: './Images/Omniman.png', 
+      teamNumber: '14943', teamName: "Weber Rambots", teamLink: '', 
+      cadLink: "https://a360.co/47TWjDD", cadText: "https://a360.co/47TWjDD", 
+      tags: [TagsStates.NA, TagsStates.VerticalSlides, TagsStates.Arm,TagsStates.Intake,TagsStates.OdometryPods,TagsStates.ColorSensor,TagsStates.Bevel,TagsStates.HDPE],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }
   ];
   const handleCardClick = (card) => {
