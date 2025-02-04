@@ -38,10 +38,12 @@ function App() {
     Webcam: 'Webcam',
     OdometryPods: 'Odometry Pods',
     ColorSensor: 'Color Sensor',
+    DistanceSensor: 'Distance Sensor',
     //DriveTrain
     Mecanum: 'Mecanum Drive',
     Tank: 'Tank Drive',
     Swerve: 'Swerve Drive',
+    XDrive: 'X-Drive',
     //Drive-type
     Bevel: 'Bevel Driven',
     Direct: 'Direct Driven',
@@ -49,7 +51,8 @@ function App() {
     Chain: 'Chain Driven',
     //Plates
     HDPE: 'HDPE',
-    Aluminum: 'Aluminum'
+    Aluminum: 'Aluminum',
+    PLA: 'PLA'
   });
   const seasonsList = [
     TagsStates.NA,
@@ -66,7 +69,8 @@ function App() {
   const drivetrainList = [
     TagsStates.Mecanum,
     TagsStates.Tank,
-    TagsStates.Swerve
+    TagsStates.Swerve,
+    TagsStates.XDrive
   ];
   const mechanismList = [
     TagsStates.NA,
@@ -83,7 +87,8 @@ function App() {
     TagsStates.NA,
     TagsStates.Webcam,
     TagsStates.OdometryPods,
-    TagsStates.ColorSensor
+    TagsStates.ColorSensor,
+    TagsStates.DistanceSensor
   ];
   const driveList = [
     TagsStates.NA,
@@ -175,6 +180,51 @@ function App() {
       tags: [TagsStates.NA, TagsStates.VerticalSlides, TagsStates.Arm,TagsStates.Intake,TagsStates.OdometryPods,TagsStates.ColorSensor,TagsStates.Bevel,TagsStates.HDPE],
       season: [TagsStates.NA,TagsStates.IntoTheDeep],
       drive: [TagsStates.NA,TagsStates.Mecanum]
+    },
+    { 
+      id: 8, title: 'RipTide',
+      description: " Active intake that rotates back into claw deposit, Belt Driven DT, Vertical Slides", 
+      imageLink: './Images/Riptide.PNG', 
+      teamNumber: '23511', teamName: "Seattle Solvers", teamLink: 'https://www.seattlesolvers.com/', cadLink:"https://cad.onshape.com/documents/ae5ff79658ff2a51ece82558/w/1babafd80652d7e5216f214c/e/548f3b6bbedc29b9264b1a15", cadText: "https://cad.onshape.com/documents/ae5ff79658ff2a51ece82558/w/1babafd80652d7e5216f214c/e/548f3b6bbedc29b9264b1a15", 
+      tags: [TagsStates.NA, TagsStates.VerticalSlides, TagsStates.Arm,TagsStates.Intake,TagsStates.OdometryPods,TagsStates.ColorSensor,TagsStates.Aluminum,TagsStates.Belt,TagsStates.Claw],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
+    },
+    {
+    id: 9, title: 'Everybot: Into The Deep',
+      description: " Practical Robot that uses a rotating arm and a semi-passive intake to score, cheap and reliable and open to all teams to use", 
+      imageLink: './Images/FRC-118.PNG', 
+      teamNumber: 'FRC 118', teamName: "Robonauts", teamLink: 'https://www.118everybot.org/', cadLink:"https://cad.onshape.com/documents/a2212ec4d0ff04ecfa468fab/w/de74c2fa846c84827f4ffeb0/e/a069a0c4d53cbe62662539e1", cadText: "https://cad.onshape.com/documents/a2212ec4d0ff04ecfa468fab/w/de74c2fa846c84827f4ffeb0/e/a069a0c4d53cbe62662539e1", 
+      tags: [TagsStates.NA, TagsStates.Arm,TagsStates.Intake,TagsStates.Direct,TagsStates.Ascent,TagsStates.Claw],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
+    },
+    { 
+      id: 10, title: '22581-Into The Deep',
+      description: " Efficient robot with a roller intake and a claw outake, belted drive with mecanum", 
+      imageLink: './Images/22581IntoTheDeep.PNG', 
+      teamNumber: '22581', teamName: " Red Ring of Death", teamLink: '', cadLink:"https://cad.onshape.com/documents/2edfa749e53c0bb6a0248093/w/a3996554e5950685df89a20d/e/312f2e6e1229b471b8b83c19", cadText: "https://cad.onshape.com/documents/2edfa749e53c0bb6a0248093/w/a3996554e5950685df89a20d/e/312f2e6e1229b471b8b83c19", 
+      tags: [TagsStates.NA, TagsStates.Arm,TagsStates.Intake,TagsStates.Belt,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.Ascent,TagsStates.Aluminum,TagsStates.Claw],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
+    },
+    { 
+      id: 11, title: 'Orca',
+      description: "Optimal Robot with surgical tubing intake and a bucket outtake", 
+      imageLink: './Images/Orca.PNG', 
+      teamNumber: '16021', teamName: "Techno Maniacs", teamLink: 'https://technomaniacs.org/', cadLink:"https://cad.onshape.com/documents/d2a761d1667a8220e48ec838/v/d666c8e587965b23325a4a30/e/e57740242c43a75198d9f31b", cadText: "https://cad.onshape.com/documents/d2a761d1667a8220e48ec838/v/d666c8e587965b23325a4a30/e/e57740242c43a75198d9f31b", 
+      tags: [TagsStates.NA,TagsStates.Intake,TagsStates.Belt,TagsStates.Transfer,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.Aluminum],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
+    },
+    { 
+      id: 12, title: 'McQueen',
+      description: "Inspire 3 @ States, Think 1st @ States. 1+5 Autonomous, Turret Sidegame", 
+      imageLink: './Images/McQueen.PNG', 
+      teamNumber: '6078', teamName: "Cut the Red Wire", teamLink: 'https://apexmakerclub.org/ctrw', cadLink:"https://cad.onshape.com/documents/63696c036a3b765b3ce31f8d/w/1314b1f7a7d37cb0337a7868/e/cb9d1f2e7ae520b2aaec1d6a?renderMode=0&uiState=67a057ba681f531ce06da52f", cadText: "https://cad.onshape.com/documents/63696c036a3b765b3ce31f8d/w/1314b1f7a7d37cb0337a7868/e/cb9d1f2e7ae520b2aaec1d6a?renderMode=0&uiState=67a057ba681f531ce06da52f", 
+      tags: [TagsStates.NA,TagsStates.Intake,TagsStates.Direct,TagsStates.Transfer,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.PLA,TagsStates.Webcam,TagsStates.DistanceSensor],
+      season: [TagsStates.NA,TagsStates.POWERPLAY],
+      drive: [TagsStates.NA,TagsStates.XDrive]
     }
   ];
   const handleCardClick = (card) => {
