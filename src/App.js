@@ -211,7 +211,7 @@ function App() {
     { 
       id: 11, title: 'Orca',
       description: "Optimal Robot with surgical tubing intake and a bucket outtake", 
-      imageLink: './Images/Orca.png]', 
+      imageLink: './Images/Orca.png', 
       teamNumber: '16021', teamName: "Techno Maniacs", teamLink: 'https://technomaniacs.org/', cadLink:"https://cad.onshape.com/documents/d2a761d1667a8220e48ec838/v/d666c8e587965b23325a4a30/e/e57740242c43a75198d9f31b", cadText: "https://cad.onshape.com/documents/d2a761d1667a8220e48ec838/v/d666c8e587965b23325a4a30/e/e57740242c43a75198d9f31b", 
       tags: [TagsStates.NA,TagsStates.Intake,TagsStates.Belt,TagsStates.Transfer,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.Aluminum],
       season: [TagsStates.NA,TagsStates.IntoTheDeep],
