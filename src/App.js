@@ -231,7 +231,7 @@ function App() {
     { 
       id: 12, title: 'Jeffry',
       description: "7-10 sec Sample cycle, 15-25 sec Specimen cycle", 
-      imageLink: './Images/VoidBot.jpg', 
+      imageLink: './Images/VoidBot.png', 
       teamNumber: '24078', teamName: "VOID", teamLink: 'https://voidftc.neocities.org/', cadLink:"https://cad.onshape.com/documents/3213d1cd0459755bd5e78d66/w/064370960b64af026f4de1e3/e/b01c438bef5550ab85a8f0ab", cadText: "https://cad.onshape.com/documents/3213d1cd0459755bd5e78d66/w/064370960b64af026f4de1e3/e/b01c438bef5550ab85a8f0ab", 
       tags: [TagsStates.NA,TagsStates.Claw,TagsStates.TouchSensor,TagsStates.Direct,TagsStates.Bevel,TagsStates.Arm,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.PLA,TagsStates.Webcam],
       season: [TagsStates.NA,TagsStates.IntoTheDeep],
