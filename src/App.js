@@ -38,6 +38,7 @@ function App() {
     Webcam: 'Webcam',
     OdometryPods: 'Odometry Pods',
     ColorSensor: 'Color Sensor',
+    TouchSensor: 'Touch Sensor',
     DistanceSensor: 'Distance Sensor',
     //DriveTrain
     Mecanum: 'Mecanum Drive',
@@ -88,6 +89,7 @@ function App() {
     TagsStates.Webcam,
     TagsStates.OdometryPods,
     TagsStates.ColorSensor,
+    TagsStates.TouchSensor,
     TagsStates.DistanceSensor
   ];
   const driveList = [
@@ -222,9 +224,18 @@ function App() {
       description: "Inspire 3 @ States, Think 1st @ States. 1+5 Autonomous, Turret Sidegame", 
       imageLink: './Images/McQueen.png', 
       teamNumber: '6078', teamName: "Cut the Red Wire", teamLink: 'https://apexmakerclub.org/ctrw', cadLink:"https://cad.onshape.com/documents/63696c036a3b765b3ce31f8d/w/1314b1f7a7d37cb0337a7868/e/cb9d1f2e7ae520b2aaec1d6a?renderMode=0&uiState=67a057ba681f531ce06da52f", cadText: "https://cad.onshape.com/documents/63696c036a3b765b3ce31f8d/w/1314b1f7a7d37cb0337a7868/e/cb9d1f2e7ae520b2aaec1d6a?renderMode=0&uiState=67a057ba681f531ce06da52f", 
-      tags: [TagsStates.NA,TagsStates.Intake,TagsStates.Direct,TagsStates.Transfer,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.PLA,TagsStates.Webcam,TagsStates.DistanceSensor],
+      tags: [TagsStates.NA,TagsStates.Direct,TagsStates.Transfer,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.PLA,TagsStates.Webcam,TagsStates.DistanceSensor],
       season: [TagsStates.NA,TagsStates.POWERPLAY],
       drive: [TagsStates.NA,TagsStates.XDrive]
+    },
+    { 
+      id: 12, title: 'Jeffry',
+      description: "7-10 sec Sample cycle, 15-25 sec Specimen cycle", 
+      imageLink: './Images/VoidBot.jpg', 
+      teamNumber: '24078', teamName: "VOID", teamLink: 'https://voidftc.neocities.org/', cadLink:"https://cad.onshape.com/documents/3213d1cd0459755bd5e78d66/w/064370960b64af026f4de1e3/e/b01c438bef5550ab85a8f0ab", cadText: "https://cad.onshape.com/documents/3213d1cd0459755bd5e78d66/w/064370960b64af026f4de1e3/e/b01c438bef5550ab85a8f0ab", 
+      tags: [TagsStates.NA,TagsStates.Claw,TagsStates.TouchSensor,TagsStates.Direct,TagsStates.Bevel,TagsStates.Arm,TagsStates.VerticalSlides,TagsStates.OdometryPods,TagsStates.PLA,TagsStates.Webcam],
+      season: [TagsStates.NA,TagsStates.IntoTheDeep],
+      drive: [TagsStates.NA,TagsStates.Mecanum]
     }
   ];
   const handleCardClick = (card) => {
