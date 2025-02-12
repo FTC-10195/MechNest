@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import Card from './Card';
-import Navbar from './Navbar';
 import MechanismHandler from './MechanismHandler';
+import Navbar from './Navbar';
 import './index.css';
 
 function App() {
@@ -256,52 +256,54 @@ function App() {
     }
     return false;
   }
-  const cards = [];
-  var deletedCards = 0;
+
+ // Display cards based on tags and sort them based on team number
+ let cards = []; 
  for (let i = 0; i < preFilteredCards.length; i++) {
-  var Allowed = true;
-    var CARDTAGS = preFilteredCards[i].tags;
-    var CARDSEASONS = preFilteredCards[i].season;
-    var CARDDRIVE = preFilteredCards[i].drive;
-   if ((CARDSEASONS[1] == Season || Season == 'N/A')){
-       cards[i] = preFilteredCards[i];
-    }else{
-      deletedCards = deletedCards +1;
+    let Allowed = true; // Whether the card will be displayed
+    let CARDTAGS = preFilteredCards[i].tags; // Get card data for filtering
+    let CARDSEASONS = preFilteredCards[i].season;
+    let CARDDRIVE = preFilteredCards[i].drive;
+
+    if (!(CARDSEASONS[1] === Season || Season === 'N/A')) { // Remove card if season doesn't match or isn't N/A
       Allowed = false;
-   }
-   if ((CARDDRIVE[1] == Drivetrain || Drivetrain == 'N/A')){
-    cards[i] = preFilteredCards[i];
- }else{
-  if (Allowed == true){
-    deletedCards = deletedCards +1;
-  }
-   Allowed = false;
-}
-    var n = 0;
-    for (let index = 0; index < selectedTags.length; index++) {
-      if (findString(CARDTAGS,selectedTags[index])){
-        n = n+1
-      }
-     }
-     if (n == selectedTags.length &&  Allowed == true){
-      cards[i] = preFilteredCards[i];
-     }else{
-      if (Allowed == true){
-        deletedCards = deletedCards +1;
-      }
+    }
+    if (!(CARDDRIVE[1] === Drivetrain || Drivetrain === 'N/A')) { // Remove if drivetrain doesn't match or isn't N/A
       Allowed = false;
-      if (cards[i] == preFilteredCards[i]){
-        delete cards[i]
-      }
-     }
+    }
+    
+    // Find how many selectedTags exist in CARDTAGS. If this count is not equal to the total number of selectedTags,
+    // the card's tags do not match the selected tags, so the card is removed.
+    let tagMatchCount = selectedTags.filter(tag => CARDTAGS.includes(tag)).length;
+    if (tagMatchCount !== selectedTags.length) {
+      Allowed = false;
+    }
+
+    if (Allowed) {
+      cards.push(preFilteredCards[i]); // Add card to the display list if everything matches
+    }
   }
+  // Once everything is filtered, sort the cards by team number by comparing them to each other
+  cards.sort((a, b) => {
+    const numA = parseInt(a.teamNumber);
+    const numB = parseInt(b.teamNumber);
+
+    // If any team number contains non-numbers, treat them as greater so they end up at the end
+    if (isNaN(numA) && !isNaN(numB)) return 1;
+    if (!isNaN(numA) && isNaN(numB)) return -1;
+    if (isNaN(numA) && isNaN(numB)) return 0;
+
+    // Normal sort. Smaller team numbers return a negative value and are sorted before larger numbers.
+    return numA - numB;
+  })
+
   window.addEventListener('resize', checkDevice);
   return (
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
       <title>Mech Nest</title>
       <Navbar other = {true} isMobile ={isMobile} />
       <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive = {setDrivetrain} setTags = {setTags}/>
-      <div className={cards.length < 1 || !cards.length ||cards === undefined ||deletedCards == preFilteredCards.length ? 'App-Text' : 'invisible'}>
+      <div className={cards.length === 0 ? 'App-Text' : 'invisible'}>
       No Results Found
       </div>
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
