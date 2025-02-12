@@ -18,6 +18,9 @@ function getCardType(){
        if (drivetrain[1] != "N/A"){
         filteredTags[filteredTags.length] = drivetrain[1]
        }
+       if (teamLink == ''){
+        teamLink = null;
+       }
     return (
         <div className={`card ${getCardType()}`}>
              <a
