@@ -19,3 +19,17 @@ values ('YOUR_AUTH_USER_ID', true);
 6. Restart the development server with `npm start`.
 
 Without Supabase environment variables, the app uses the local development fallback account shown in the Admin panel. That fallback is not suitable for production.
+
+## Publish to the website
+
+From the project folder, run:
+
+```bash
+cp .env.example .env.local
+# Edit .env.local with the Supabase URL and anon key
+npm run deploy
+```
+
+The deploy script builds the app and publishes the `build` folder to the `gh-pages` branch. In GitHub, open **Settings → Pages** and set the source to the `gh-pages` branch and `/ (root)`. The custom domain is preserved by [`public/CNAME`](public/CNAME).
+
+After deployment, open `https://mech-nest.com`. If the domain is not connected yet, add the GitHub Pages DNS records at your domain provider and wait for DNS propagation.
