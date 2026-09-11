@@ -1,59 +1,79 @@
-.App-logo {
-  position: absolute;
-  right: 0;
-  height: 50px;
-}
-.left-side {
-  display: flex;
-  gap: 20px;
-}
-.header.computer {
-  height: 50px;
-  font-family : sans-serif;
-  font-weight: bold;
-  color: #ffffff;
-}
-.header.mobile {
-  height: 50px;
-  font-family : sans-serif;
-  font-weight: bold;
-  color: #ffffff;
-}
-.post-button{
-  text-align: center;
-  width: 100px;
-  height: 30px;
-  top: 10px;
-  left: 20%;
-  position: relative;
-  font-size: 20px;
-  font-family : sans-serif;
-  cursor: pointer;
-  display: flex;  
-  background-color: #D15F22; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.2s;
-  gap: 0.5rem;
-  align-items: center;
-}
-.post-button img.forms-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  padding-left: 0.5rem;
-}
-.post-button:hover {
-  background-color: #a64c1c; 
-}
 .navbar {
-  font-family : sans-serif;
-  display: flex;
   position: sticky;
   top: 0;
-  left: 0;
-  height: 50px;
   z-index: 10;
-  background-color: #020408;
-  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 28px;
+  border-bottom: 1px solid #343b38;
+  background: rgba(16, 19, 22, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header.computer,
+.header.mobile {
+  display: block;
+  height: 38px;
+  object-fit: contain;
+}
+
+.post-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid #4b514d;
+  color: #f4f2ed;
+  background: #1d2322;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.post-button:hover {
+  border-color: #f28b4d;
+  background: #2a302e;
+}
+
+.post-button img.forms-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.App-logo {
+  display: block;
+  width: auto;
+  height: 38px;
+}
+
+@media (max-width: 560px) {
+  .navbar {
+    height: 58px;
+    padding: 0 14px;
+  }
+
+  .left-side {
+    gap: 12px;
+  }
+
+  .header.computer {
+    width: 122px;
+  }
+
+  .post-button {
+    padding: 8px;
+    font-size: 0;
+  }
+
+  .App-logo {
+    height: 32px;
+  }
 }

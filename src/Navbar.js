@@ -6,13 +6,13 @@ function Navbar({isMobile}) {
     return (
       <header className="navbar">
       <div className="left-side">
-        <span  className="header-text"><img src={isMobile ? './Images/MechNestLogo.png' : './Images/MechNestText.png'} className={`header ${isMobile ? 'mobile' : 'computer'}`}/></span>
+        <span  className="header-text"><img src={isMobile ? './Images/MechNestLogo.png' : './Images/MechNestText.png'} alt="MechNest home" className={`header ${isMobile ? 'mobile' : 'computer'}`}/></span>
           <a
             href=" https://docs.google.com/forms/d/e/1FAIpQLSfTPRbnQ86wxPXeoHmyfvKjxQs7hOzbsfSXYbpvG3JEcj7jaw/viewform?usp=dialog"
             target="_blank"
             rel="noopener noreferrer"
           >
-          <span className="post-button"><img src={'./Images/googleformslogo.png'} className="forms-icon"/>Post</span>
+          <span className="post-button"><img src={'./Images/googleformslogo.png'} alt="" className="forms-icon"/>Post</span>
           </a>
       </div>
         <a
@@ -20,7 +20,7 @@ function Navbar({isMobile}) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={'./Images/nightowlslogo.png'} alt="logo" className = "App-logo"/>
+          <img src={'./Images/nightowlslogo.png'} alt="Night Owls Robotics" className = "App-logo"/>
         </a>
       </header>
   );

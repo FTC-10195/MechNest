@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Card from './Card';
+import AdminPanel from './AdminPanel';
+import { isSupabaseConfigured, supabase } from './supabaseClient';
 import MechanismHandler from './MechanismHandler';
 import Navbar from './Navbar';
 import './index.css';
 
 function App() {
   const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedFullscreen, setFullScreen] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);;
   const [selectedTags, setTags] = useState(['N/A']); 
   const [Season, setSeason] = useState('N/A');
   const [Drivetrain, setDrivetrain] = useState('N/A');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterReset, setFilterReset] = useState(0);
+  const [customCards, setCustomCards] = useState([]);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const TagsStates = Object.freeze({
     NA: 'N/A',
     //Seasons
@@ -30,7 +36,6 @@ function App() {
     Ascent: 'Ascent',
     VerticalSlides: 'Vertical Slides',
     Claw:'Claw',
-    Bucket: 'Bucket',
     Fourbar: 'Fourbar',
     Bucket: 'Bucket',
     Transfer: 'Transfer System',
@@ -238,32 +243,159 @@ function App() {
       drive: [TagsStates.NA,TagsStates.Mecanum]
     }
   ];
+  const allCards = [...preFilteredCards, ...customCards];
+
+  useEffect(() => {
+    if (isSupabaseConfigured) {
+      const loadSupabaseDesigns = async () => {
+        const { data, error } = await supabase.from('designs').select('*').order('created_at', { ascending: false });
+        if (!error && data) {
+          setCustomCards(data.map((design) => ({
+            id: design.id,
+            title: design.title,
+            description: design.description,
+            imageLink: design.image_url || './Images/MechNestLogo.png',
+            teamNumber: design.team_number,
+            teamName: design.team_name,
+            teamLink: design.team_url,
+            cadLink: design.cad_url,
+            cadText: design.cad_url,
+            tags: design.tags?.length ? design.tags : ['N/A'],
+            season: ['N/A', design.season],
+            drive: ['N/A', design.drivetrain],
+          })));
+        }
+      };
+      loadSupabaseDesigns();
+      supabase.auth.getSession().then(({ data }) => setIsAdminAuthenticated(Boolean(data.session)));
+      const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+        setIsAdminAuthenticated(Boolean(session));
+      });
+      return () => authListener.subscription.unsubscribe();
+    }
+
+    try {
+      setCustomCards(JSON.parse(localStorage.getItem('mechnest-custom-designs')) || []);
+      setIsAdminAuthenticated(localStorage.getItem('mechnest-admin-session') === 'active');
+    } catch {
+      setCustomCards([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured) {
+      localStorage.setItem('mechnest-custom-designs', JSON.stringify(customCards));
+    }
+  }, [customCards]);
+
+  const handleAdminLogin = async (username, password) => {
+    if (isSupabaseConfigured) {
+      const { data, error } = await supabase.auth.signInWithPassword({ email: username, password });
+      if (error || !data.user) return false;
+      const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', data.user.id).single();
+      if (!profile?.is_admin) {
+        await supabase.auth.signOut();
+        return false;
+      }
+      setIsAdminAuthenticated(true);
+      return true;
+    }
+
+    const valid = username === 'admin' && password === 'mechnest-admin';
+    if (valid) {
+      setIsAdminAuthenticated(true);
+      localStorage.setItem('mechnest-admin-session', 'active');
+    }
+    return valid;
+  };
+
+  const handleAdminLogout = async () => {
+    if (isSupabaseConfigured) await supabase.auth.signOut();
+    setIsAdminAuthenticated(false);
+    localStorage.removeItem('mechnest-admin-session');
+  };
+
+  const handleAddDesign = async (design) => {
+    if (isSupabaseConfigured) {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) throw new Error('Please sign in again before adding a design.');
+
+      let cadUrl = design.cadLink;
+      if (design.cadFile) {
+        const filePath = `${userData.user.id}/${Date.now()}-${design.cadFile.name}`;
+        const { error: uploadError } = await supabase.storage.from('cad-files').upload(filePath, design.cadFile, { upsert: false });
+        if (uploadError) throw uploadError;
+        cadUrl = supabase.storage.from('cad-files').getPublicUrl(filePath).data.publicUrl;
+      }
+
+      const { data, error } = await supabase.from('designs').insert({
+        title: design.title,
+        team_number: design.teamNumber,
+        team_name: design.teamName,
+        description: design.description,
+        image_url: design.imageLink,
+        team_url: design.teamLink,
+        cad_url: cadUrl,
+        season: design.season[1],
+        drivetrain: design.drive[1],
+        tags: design.tags.filter((tag) => tag !== 'N/A'),
+        created_by: userData.user.id,
+      }).select().single();
+      if (error) throw error;
+      setCustomCards((current) => [{ ...design, id: data.id, cadLink: cadUrl, cadFile: undefined }, ...current]);
+      return;
+    }
+
+    let localCadLink = design.cadLink;
+    if (design.cadFile) {
+      localCadLink = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(design.cadFile);
+      });
+    }
+    setCustomCards((current) => [...current, { ...design, cadLink: localCadLink, cadFile: undefined }]);
+  };
   const handleCardClick = (card) => {
-    if (card.id == selectedCard){
+    if (card.id === selectedCard){
       setSelectedCard(null);
     }else {
       setSelectedCard(card.id);
     } 
     };
-  const checkDevice = () => {
-    setIsMobile(window.innerWidth <= 768); // Threshold for mobile devices
+  const clearFilters = () => {
+    setSeason('N/A');
+    setDrivetrain('N/A');
+    setTags(['N/A']);
+    setFilterReset((reset) => reset + 1);
   };
-  function findString(list,target){
-    for (let i = 0; i < list.length; i++) {
-      if (list[i] == target){
-        return true;
-      }
-    }
-    return false;
-  }
-
+  useEffect(() => {
+    const checkDevice = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
  // Display cards based on tags and sort them based on team number
  let cards = []; 
- for (let i = 0; i < preFilteredCards.length; i++) {
+ for (let i = 0; i < allCards.length; i++) {
     let Allowed = true; // Whether the card will be displayed
-    let CARDTAGS = preFilteredCards[i].tags; // Get card data for filtering
-    let CARDSEASONS = preFilteredCards[i].season;
-    let CARDDRIVE = preFilteredCards[i].drive;
+    let CARDTAGS = allCards[i].tags; // Get card data for filtering
+    let CARDSEASONS = allCards[i].season;
+    let CARDDRIVE = allCards[i].drive;
+    const searchText = searchQuery.trim().toLowerCase();
+    const matchesSearch = !searchText || [
+      allCards[i].title,
+      allCards[i].teamName,
+      allCards[i].teamNumber,
+      allCards[i].description,
+      ...CARDTAGS,
+      ...CARDSEASONS,
+      ...CARDDRIVE,
+    ].some((value) => value.toLowerCase().includes(searchText));
+
+    if (!matchesSearch) {
+      Allowed = false;
+    }
 
     if (!(CARDSEASONS[1] === Season || Season === 'N/A')) { // Remove card if season doesn't match or isn't N/A
       Allowed = false;
@@ -280,7 +412,7 @@ function App() {
     }
 
     if (Allowed) {
-      cards.push(preFilteredCards[i]); // Add card to the display list if everything matches
+      cards.push(allCards[i]); // Add card to the display list if everything matches
     }
   }
   // Once everything is filtered, sort the cards by team number by comparing them to each other
@@ -297,15 +429,66 @@ function App() {
     return numA - numB;
   })
 
-  window.addEventListener('resize', checkDevice);
+  const activeFilterCount = [
+    Season !== 'N/A' ? Season : null,
+    Drivetrain !== 'N/A' ? Drivetrain : null,
+    ...selectedTags.filter((tag) => tag !== 'N/A'),
+  ].length;
+
   return (
     <div className={`App ${isMobile ? 'mobile' : 'computer'}`}>
-      <title>Mech Nest</title>
-      <Navbar other = {true} isMobile ={isMobile} />
-      <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive = {setDrivetrain} setTags = {setTags}/>
-      <div className={cards.length === 0 ? 'App-Text' : 'invisible'}>
-      No Results Found
-      </div>
+      <Navbar isMobile={isMobile} />
+      <main className="catalog-shell">
+        <section className="catalog-intro">
+          <div>
+            <p className="eyebrow">FTC mechanism library</p>
+            <h1>Find the mechanism behind the match.</h1>
+            <p className="intro-copy">Browse proven robot designs, compare build choices, and jump straight into the CAD.</p>
+          </div>
+          <div className="catalog-stat" aria-label={`${cards.length} designs shown`}>
+            <strong>{cards.length}</strong>
+            <span>designs shown</span>
+          </div>
+        </section>
+
+        <section className="catalog-toolbar" aria-label="Catalog controls">
+          <label className="search-field">
+            <span className="sr-only">Search designs</span>
+            <span className="search-icon" aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search robots, teams, or mechanisms"
+            />
+            {searchQuery && (
+              <button className="clear-search" type="button" onClick={() => setSearchQuery('')} aria-label="Clear search">×</button>
+            )}
+          </label>
+          <div className="toolbar-actions">
+            <span className="result-count">{cards.length} of {allCards.length} designs</span>
+            <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive={setDrivetrain} setTags={setTags} onClear={clearFilters} clearSignal={filterReset} />
+            <button className="admin-trigger" type="button" onClick={() => setIsAdminOpen(true)}>Admin</button>
+          </div>
+        </section>
+
+        {activeFilterCount > 0 && (
+          <div className="active-filters" aria-live="polite">
+            <span className="active-label">Filtering by</span>
+            <span className="filter-count">{activeFilterCount}</span>
+            <button className="clear-all" type="button" onClick={() => document.querySelector('.clear-button')?.click()}>
+              Clear filters
+            </button>
+          </div>
+        )}
+
+        {cards.length === 0 && (
+          <div className="empty-state">
+            <span className="empty-icon" aria-hidden="true">⌕</span>
+            <h2>No designs found</h2>
+            <p>Try a different search or clear your filters to see more robots.</p>
+          </div>
+        )}
       <div className={`card-container ${isMobile ? 'mobile' : 'computer'}`}>
         {cards.map((card) => (
           <Card
@@ -323,10 +506,20 @@ function App() {
             drivetrain = {card.drive}
             isMobile={isMobile}
             onClick={() => handleCardClick(card)}
-            isFullscreen  = {card.id == selectedCard}
+            isFullscreen  = {card.id === selectedCard}
           />
         ))}
       </div>
+      </main>
+      <AdminPanel
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        onAddDesign={handleAddDesign}
+        isAuthenticated={isAdminAuthenticated}
+        onLogin={handleAdminLogin}
+        onLogout={handleAdminLogout}
+        isSupabaseConfigured={isSupabaseConfigured}
+      />
     </div>
   );
 }

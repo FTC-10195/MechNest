@@ -1,132 +1,115 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+.filter-panel {
+  position: relative;
 }
 
-.App {
-  text-align: left;
-  padding: 20px;
-}
-.search-button img.forms-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  padding-left: 0.5rem;
-}
+.search-button,
 .clear-button {
-  position: absolute;
-  text-align: center;
-  justify-content: center;
- width: 100px;
- height: 30px;
- top: 80px;
- left: calc(5% + 100px + 40px);
- overflow-y: scroll;
- font-size: 16px;
- font-family : sans-serif;
- cursor: pointer;
- display: flex;  
- background-color: #007bff;
- color: white;
- border: none;
- border-radius: 5px;
- transition: background-color 0.2s;
- gap: 0.5rem;
- align-items: center;
-}
-.search-button {
-   text-align: center;
-  width: 100px;
-  height: 30px;
-  top: 10px;
-  left: 5%;
-  overflow-y: scroll;
-  position: relative;
-  font-size: 20px;
-  font-family : sans-serif;
+  height: 40px;
+  border: 1px solid #4b514d;
+  color: #f4f2ed;
+  background: #252b29;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  display: flex;  
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.2s;
-  gap: 0.5rem;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.search-button {
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  white-space: nowrap;
 }
-.search-button:hover {
-  background-color: #0056b3;
+
+.search-button:hover,
+.clear-button:hover {
+  border-color: #f28b4d;
+  background: #303835;
 }
+
+.search-button img.forms-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.clear-button {
+  display: none;
+}
+
 .frame.On {
-  overflow: visible;
-  overflow-y : scroll;
-  border-radius: 11px;
-  color: #ffffff;
-  z-index: 5;
-  top: 20px;
-  left: 5%;
-  position: relative;
-  width:90%;
-  max-width:800px;
-  height: 50vh;
-  max-height: 250px;
-  background-color: #151515;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 20;
+  width: min(560px, calc(100vw - 28px));
+  max-height: min(480px, 65vh);
+  overflow-y: auto;
+  padding: 18px;
+  border: 1px solid #4b514d;
+  background: #1b201f;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
+
 .frame.Off {
-  height: 0px;
-  visibility: hidden;
+  display: none;
 }
+
 .frame-title {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
+  margin-bottom: 16px;
+  color: #f4f2ed;
+  font-family: Baskerville, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  font-size: 22px;
 }
-.tag-container{
-  margin-top: 10px;
-  gap: 0px;
-  position: relative;
-  left: 10px;
-  width: 100%;
-  max-width: calc(100% - 5px);
-  justify-content: left;
+
+.tag-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
-  font-size: 16px;
-  font-weight: bold;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
 }
-.tag-title{
-  font-size: 14px;
-  font-weight: bold;
-  text-align: left;
+
+.tag-title {
+  flex: 0 0 100%;
+  margin-bottom: 2px;
+  color: #9ca49f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
-.tags{
+
+.tags {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  padding: 0 10px;
+  border: 1px solid #3f4743;
+  border-radius: 2px;
+  color: #c8ceca;
+  background: #252b29;
+  font-size: 11px;
   cursor: pointer;
-  font-family : sans-serif;
-  font-style: normal;
-  height: 30px;
-  width: calc(15%);
-  min-width: 70px;
-  max-width: 70px;
-  place-content: center;
-  font-size:  11px;
-  position: relative;
-  text-align: center;
-  border-radius: 4px;
-  display: inline-block;  
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: block;
-  line-height: 1em; /* a */
-  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
-  background-color: #30302e;
-  transition: background-color 0.2s;
+  list-style: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
-.selected-tag {
-  background-color: #ff7c1f; /* Applied when the tag is clicked */
-}
+
 .tags:hover {
-  background-color: #fe9144;
+  border-color: #f28b4d;
+  color: #fff;
+}
+
+.selected-tag {
+  border-color: #f28b4d;
+  color: #161a19;
+  background: #f28b4d;
+}
+
+@media (max-width: 720px) {
+  .frame.On {
+    right: -8px;
+  }
 }

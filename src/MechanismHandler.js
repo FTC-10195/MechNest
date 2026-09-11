@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Tags.css";
 
-function App({Tags,setSeason,setDrive,setTags}) {
+function App({Tags,setSeason,setDrive,setTags,onClear,clearSignal}) {
   const [frames, setFrames] = useState(false);
   const handleAddFrame = () => {
     setFrames(!frames);
@@ -15,6 +15,10 @@ function App({Tags,setSeason,setDrive,setTags}) {
     Drivetrain: [], // Only one tag can be selected at a time
     Other: [],   // Multiple tags can be selected
   });
+
+  useEffect(() => {
+    setSelectedTag({ Seasons: [], Drivetrain: [], Other: [] });
+  }, [clearSignal]);
 
   // Remove 'N/A' tags from all categories
   for (let i = 0; i < TagTypeList.length; i++) {
@@ -68,6 +72,7 @@ function App({Tags,setSeason,setDrive,setTags}) {
     setSeason('N/A')
     setDrive('N/A')
     setTags(['N/A'])
+    onClear?.();
     setSelectedTag({
       Seasons: [], // Only one tag can be selected at a time
       Drivetrain: [],// Only one tag can be selected at a time
@@ -75,14 +80,15 @@ function App({Tags,setSeason,setDrive,setTags}) {
     })
   }
   return (
-    <div className="App">
-      <button className="search-button" onClick={handleAddFrame}>
-        <img src={"./Images/MagnifyingGlass.png"} className="forms-icon" /> {frames ? "<" : ">"}
+    <div className="filter-controls">
+      <button className="search-button" onClick={handleAddFrame} aria-expanded={frames} aria-controls="filter-panel">
+        <img src={"./Images/MagnifyingGlass.png"} className="forms-icon" alt="" />
+        <span>{frames ? "Hide filters" : "Filter designs"}</span>
       </button>
       <button className="clear-button" onClick = {ClearTags}>
          Clear Tags
       </button>
-      <div className={`frame ${frames ? "On" : "Off"}`}>
+      <div id="filter-panel" className={`frame ${frames ? "On" : "Off"}`}>
         <div className={"frame-title"}>Tags </div>
         {/* Loop through all tags, including dynamic "Other" */}
         {TagTypeList.map((Type, index) => (

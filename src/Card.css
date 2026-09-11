@@ -1,268 +1,231 @@
-.card-container{
+.card-container {
   display: grid;
-  gap: 20px;
-  padding: 15px;
-  overflow-x: auto;
-justify-content: center;
-align-items: center;
-display: flex;
-flex-wrap: wrap;
-background-size: cover;
-background-position: center;
-  background-color: #020408;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  padding-top: 8px;
 }
-.card{
-  border-radius: 11px;
-    position: relative;
-    width: 75vw;
-    max-width: 350px;
-    height: 230px;
-    padding: 0 25px; /* Spacing between card content and edges */
-  box-sizing: border-box;
-    background-color: #151515;
-    transition: transform 0.2s;
-    box-sizing: border-box;
+
+.card {
+  position: relative;
+  min-height: 282px;
+  overflow: hidden;
+  border: 1px solid #343b38;
+  background: #1b201f;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
 }
-.fullscreen-button:hover {
-    transform: scale(1.15);
-}
+
 .card:hover {
- background-color: #272727;
+  border-color: #747b76;
+  background: #232927;
+  transform: translateY(-3px);
 }
-.card.fullscreen{
-  border-radius: 0;
-  top: 0;
-  left: 0;
+
+.card.fullscreen {
+  position: fixed;
+  inset: 0;
   z-index: 99999;
-    position: fixed;
-    width: 100%;
-    max-width: 100%;
-    height: 100vh;
-  box-sizing: border-box;
-    background-color: #151515;
-    transition: transform 0.2s;
-    box-sizing: border-box;
-}
-  .card.fullscreen.card-content {
-    padding: 40px;
-  }
-.card-details {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
-.fullscreen-button{
-  cursor: pointer;
-  position: absolute;
-  height: 4vw;
-  max-height: 15px;
-  right: 5px;
-  top: 5px;
-  transition: transform 0.2s;
-}
-.card-image{
-  position: absolute;
   display: flex;
-  top: 30px;
-  left: 10px;
-  width:  100px;
-  height: 100px;
-  object-fit: cover;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  overflow-y: auto;
+  border: 0;
+  background: #151a19;
 }
-.card-image.fullscreen{
+
+.card-teamNumber {
   position: absolute;
-  display: flex;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%,0);
-  height: 30vh;
-  width: 30vh;
-  object-fit: contain;
-}
-.card-text-container{
-  position: absolute;
-  top: 30px;
-  margin-left:  90px; /* Reserve space for image (100px width) */
-  text-align: center; /* Center text horizontally within the text container */
-  width: calc(100% - 100px - 25px); /* Ensure it fills the space between the image and card's right padding */
-  color: white; /* Optional: Text color for visibility */
-  height: 100px;
-}
-.card-text-container.fullscreen{
-  position: absolute;
-  top: calc(50px + 30vh + 10px);
+  top: 17px;
+  left: 18px;
+  z-index: 1;
   margin: 0;
-  left: 50%;
-  transform: translate(-50%,0);
-  text-align: center; /* Center text horizontally within the text container */
-  width: calc(90vw); /* Ensure it fills the space between the image and card's right padding */
-  color: white; /* Optional: Text color for visibility */
-  height: auto;
+  color: #f28b4d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
-.card-description.fullscreen{
-  margin: 12px;
-  display: -webkit-box;           /* Makes the element behave like a box */
-  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
-  overflow-y: scroll;
-  -webkit-line-clamp: 8;          /* Specifies the number of lines to display */
-  line-height: 1.5em;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:calc(7px + 2vmin);
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.card-description{
-  margin: 6px;
-  display: -webkit-box;           /* Makes the element behave like a box */
-  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
-  overflow: hidden;               /* Hides overflowed content */
-  -webkit-line-clamp: 6;          /* Specifies the number of lines to display */
-  line-height: 14px;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:14px;
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.card-title{
-  height: 10px;
+
+.card-teamNumber.fullscreen {
   position: relative;
+  top: auto;
+  left: auto;
+  max-width: 90%;
+  margin: 34px 0 0;
+  color: #f28b4d;
+  font-size: 14px;
+}
+
+.card-image {
+  position: absolute;
+  top: 48px;
+  left: 18px;
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  background: #111615;
+}
+
+.card-image.fullscreen {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: min(62vw, 360px);
+  height: min(38vh, 340px);
+  margin-top: 20px;
+  transform: none;
+  background: transparent;
+}
+
+.card-text-container {
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  width: calc(100% - 142px);
+  color: #f4f2ed;
+}
+
+.card-text-container.fullscreen {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: min(720px, calc(100% - 36px));
+  margin: 14px 0 0;
+  text-align: center;
+}
+
+.card-title {
+  min-height: 38px;
+  font-family: Baskerville, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.card-title.fullscreen {
+  min-height: 0;
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.card-description {
+  display: -webkit-box;
+  margin: 12px 0 0;
+  overflow: hidden;
+  color: #aeb4b0;
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.card-description.fullscreen {
+  display: block;
+  max-height: 30vh;
+  margin: 18px 0;
+  overflow-y: auto;
+  color: #c8ceca;
   font-size: 16px;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
+  line-height: 1.65;
 }
-.card-title.fullscreen{
-  height: 30px;
-  position: relative;
-  font-size: 25px;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-}
-.card-teamNumber{
-  margin: 6px;
-  display: -webkit-box;           /* Makes the element behave like a box */
-  -webkit-box-orient: vertical;   /* Specifies the box's orientation as vertical */
-  overflow: hidden;               /* Hides overflowed content */
-  -webkit-line-clamp: 1;          /* Specifies the number of lines to display */
-  line-height: 1.1em;             /* Optional: Adjust line-height for spacing between lines */      
-    font-size:16px;
-    font-weight: bold;
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.card-teamNumber.fullscreen{
-  height: 50px;
-  max-width: 80%;
-  text-align: center;
-    font-size:calc(11px + 3vmin);
-    display: inline;          /* Makes the element behave like a box */
-    margin: 0 auto; /* Center the container horizontally */
-    font-weight: Bold;
-  font-family : sans-serif;
-  color: #ffffff;
-}
-.tag-container-large{
-  width:   calc(90%);
-  justify-content: start;
-    height:calc(20% + 25px);
+
+.fullscreen-button {
   position: absolute;
-  left: 5px;
-    bottom: 20px;
-overflow-y: scroll;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
+  top: 15px;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  padding: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background-color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.fullscreen-button:hover {
+  background: #3b4440;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.tag-container-large {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  left: 16px;
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 5px;
+  max-height: 42px;
+  overflow: hidden;
 }
-.tag-container-large.fullscreen{
-  position: absolute;
-  bottom: 10vh;
-  left: 50%; 
-  transform: translate(-50%,0);
-  width: 90%;
+
+.tag-container-large.fullscreen {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  left: auto;
   justify-content: center;
-  position: absolute;
-overflow-y: scroll;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(.5vmin + 2px);
+  width: min(760px, calc(100% - 36px));
+  max-height: 30vh;
+  margin: 16px 0 30px;
+  overflow-y: auto;
 }
-.tag.fullscreen{
-  cursor: pointer;
-  font-family : sans-serif;
-  font-style: normal;
-  height: 6vmin;
-  min-height:  25px;
-  width: 12vmin;
-  min-width: 45px;
-  place-content: center;
-  font-size:  calc(9px + .5vmin);
-  position: relative;
-  text-align: center;
-  border-radius: 4px;
-  display: inline-block;  
-  background-color: #30302e; 
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  max-width: 120px;
+  padding: 0 7px;
+  border-radius: 2px;
+  color: #c8ceca;
+  background: #303735;
+  font-size: 10px;
+  line-height: 1.1;
+  list-style: none;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: block;
-  line-height: 1em; /* a */
-  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
-  transition: transform 0.2s;
+  white-space: nowrap;
 }
-.tag{
-  cursor: pointer;
-  font-family : sans-serif;
-  font-style: normal;
-  height: 20px;
-  min-width: 45px;
-  width: calc(20%);
-  max-width: 80px;
-  place-content: center;
-  font-size:  10px;
+
+.tag.fullscreen {
+  min-height: 28px;
+  max-width: 180px;
+  padding: 0 11px;
+  font-size: 12px;
+}
+
+.season {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  max-width: 40%;
+  color: #8f9892;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.season.fullscreen {
   position: relative;
-  text-align: center;
-  border-radius: 4px;
-  display: inline-block;  
-  background-color: #30302e; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: block;
-  line-height: 1em; /* a */
-  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
-  transition: transform 0.2s;
+  right: auto;
+  bottom: auto;
+  max-width: 90%;
+  margin: 0;
+  color: #f28b4d;
+  font-size: 13px;
 }
-.season.fullscreen{
-  word-wrap: break-word;
-  position: absolute;
-  font-size:calc(11px + 2vmin);
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-right: 0;
-bottom: 0;
-margin: 5px;
-}
-.season{
-  word-wrap: break-word;
-  position: absolute;
-  font-size:11px;
-font-family : sans-serif;
-font-weight: bold;
-color: #ffffff;
-right: 0;
-bottom: 0;
-margin: 5px;
-}
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
-.tag:hover {
-  background-color: #fe9144;
+
+@media (max-width: 720px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 270px;
+  }
 }

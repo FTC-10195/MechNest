@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import './Card.css';
 function Card({ title, description,imageLink,teamNumber, teamName,teamLink,cadLink, cadText, tags, isMobile,season, drivetrain,onClick,isFullscreen}) {
     const combinedNameNumber = "#" + teamNumber+ " - " + teamName;
@@ -11,14 +10,14 @@ function getCardType(){
     }
     const filteredTags = [];
     for (let index = 0; index < tags.length; index++) {
-        if (tags[index] != 'N/A'){
+        if (tags[index] !== 'N/A'){
             filteredTags[index] = tags[index]
         }
        }
-       if (drivetrain[1] != "N/A"){
+    if (drivetrain[1] !== "N/A"){
         filteredTags[filteredTags.length] = drivetrain[1]
        }
-       if (teamLink == ''){
+    if (teamLink === ''){
         teamLink = null;
        }
     return (
@@ -35,14 +34,14 @@ function getCardType(){
                 target="_blank"
                 rel="noopener noreferrer"
             >
-            <img src={imageLink} alt="image" className = {`card-image ${getCardType()}`}/>
+            <img src={imageLink} alt={`${title} robot design`} className = {`card-image ${getCardType()}`}/>
             </a>
             <div className = {`card-text-container ${getCardType()}`}>
                 <div className = {`card-title ${getCardType()}`}>{title}</div>
                 <p className = { `card-description ${getCardType()}`}> {description}</p>
             </div>
             <div className = {`season ${getCardType()}`}> {season[1]} </div>
-            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt="fullscreen-button" className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={onClick}/>
+            <img src={isFullscreen ? './Images/fullscreenexit.png'   : './Images/fullscreen.png'} alt={isFullscreen ? 'Close full-screen view' : 'Open full-screen view'} className = {`fullscreen-button ${isMobile ? 'mobile' : 'computer'}`} onClick={onClick}/>
             <div className={`tag-container-large ${getCardType()}`}>
                     {filteredTags.map((tag,index) => (
                         <li key = {index} className={`tag ${getCardType()}`}>
