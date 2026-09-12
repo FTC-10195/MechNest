@@ -29,7 +29,7 @@
 
 .admin-panel h2 {
   margin: 0;
-  font-family: Baskerville, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  font-family: 'Patrick Hand', 'Chalkboard SE', 'Segoe Print', 'Bradley Hand', cursive;
   font-size: clamp(30px, 5vw, 48px);
   font-weight: 700;
   line-height: 1;
