@@ -276,7 +276,6 @@ function App() {
 
     try {
       setCustomCards(JSON.parse(localStorage.getItem('mechnest-custom-designs')) || []);
-      setIsAdminAuthenticated(localStorage.getItem('mechnest-admin-session') === 'active');
     } catch {
       setCustomCards([]);
     }
@@ -301,18 +300,12 @@ function App() {
       return true;
     }
 
-    const valid = username === 'admin' && password === 'mechnest-admin';
-    if (valid) {
-      setIsAdminAuthenticated(true);
-      localStorage.setItem('mechnest-admin-session', 'active');
-    }
-    return valid;
+    return false;
   };
 
   const handleAdminLogout = async () => {
     if (isSupabaseConfigured) await supabase.auth.signOut();
     setIsAdminAuthenticated(false);
-    localStorage.removeItem('mechnest-admin-session');
   };
 
   const handleAddDesign = async (design) => {
@@ -468,7 +461,7 @@ function App() {
           <div className="toolbar-actions">
             <span className="result-count">{cards.length} of {allCards.length} designs</span>
             <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive={setDrivetrain} setTags={setTags} onClear={clearFilters} clearSignal={filterReset} />
-            <button className="admin-trigger" type="button" onClick={() => setIsAdminOpen(true)}>Admin</button>
+            {isSupabaseConfigured && <button className="admin-trigger" type="button" onClick={() => setIsAdminOpen(true)}>Admin</button>}
           </div>
         </section>
 
@@ -511,15 +504,15 @@ function App() {
         ))}
       </div>
       </main>
-      <AdminPanel
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        onAddDesign={handleAddDesign}
-        isAuthenticated={isAdminAuthenticated}
-        onLogin={handleAdminLogin}
-        onLogout={handleAdminLogout}
-        isSupabaseConfigured={isSupabaseConfigured}
-      />
+      {isSupabaseConfigured && <AdminPanel
+          isOpen={isAdminOpen}
+          onClose={() => setIsAdminOpen(false)}
+          onAddDesign={handleAddDesign}
+          isAuthenticated={isAdminAuthenticated}
+          onLogin={handleAdminLogin}
+          onLogout={handleAdminLogout}
+          isSupabaseConfigured={isSupabaseConfigured}
+        />}
     </div>
   );
 }

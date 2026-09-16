@@ -86,7 +86,7 @@ function AdminPanel({ isOpen, onClose, onAddDesign, isAuthenticated, onLogin, on
             <label>Password<input type="password" value={credentials.password} onChange={(event) => setCredentials({ ...credentials, password: event.target.value })} autoComplete="current-password" required /></label>
             {loginError && <p className="admin-error" role="alert">{loginError}</p>}
             <button className="admin-primary" type="submit">Sign in</button>
-            {isSupabaseConfigured ? <small>Use the administrator account created in Supabase Authentication.</small> : <small>Local demo account: <strong>admin</strong> / <strong>mechnest-admin</strong></small>}
+            <small>Use the administrator account created in Supabase Authentication.</small>
           </form>
         ) : (
           <>

@@ -39,6 +39,7 @@
   position: absolute;
   top: 17px;
   left: 18px;
+  max-width: calc(100% - 36px);
   z-index: 1;
   margin: 0;
   color: #f28b4d;
@@ -47,6 +48,9 @@
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-teamNumber.fullscreen {
@@ -84,7 +88,9 @@
   position: absolute;
   top: 50px;
   right: 16px;
+  min-width: 0;
   width: calc(100% - 142px);
+  overflow-wrap: anywhere;
   color: #f4f2ed;
 }
 
@@ -102,6 +108,7 @@
   font-family: 'Patrick Hand', 'Chalkboard SE', 'Segoe Print', 'Bradley Hand', cursive;
   font-size: 22px;
   line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 .card-title.fullscreen {
@@ -118,6 +125,7 @@
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
+  overflow-wrap: anywhere;
 }
 
 .card-description.fullscreen {
@@ -202,6 +210,7 @@
   right: 18px;
   bottom: 18px;
   max-width: 40%;
+  overflow-wrap: anywhere;
   color: #8f9892;
   font-size: 10px;
   font-weight: 800;

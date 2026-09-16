@@ -11,6 +11,7 @@
 
 .admin-panel {
   width: min(720px, 100%);
+  min-width: 0;
   max-height: min(860px, calc(100vh - 40px));
   overflow-y: auto;
   padding: clamp(22px, 4vw, 38px);
@@ -51,6 +52,7 @@
 
 .admin-login > p,
 .admin-login small {
+  overflow-wrap: anywhere;
   margin: 0;
   color: #aeb4b0;
   line-height: 1.5;
@@ -83,6 +85,12 @@
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+}
+
+.design-form input,
+.design-form textarea,
+.design-form select {
+  min-width: 0;
 }
 
 .admin-login input:focus,
@@ -129,6 +137,7 @@
 }
 
 .admin-message {
+  overflow-wrap: anywhere;
   margin: 0;
   color: #f28b4d;
   font-size: 13px;
