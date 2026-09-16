@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './AdminPanel.css';
 
 const EMPTY_FORM = {
@@ -13,13 +13,22 @@ const EMPTY_FORM = {
   drivetrain: 'Mecanum Drive',
 };
 
-function AdminPanel({ isOpen, onClose, onAddDesign, isAuthenticated, onLogin, onLogout, isSupabaseConfigured }) {
+function AdminPanel({ isOpen, onClose, onAddDesign, isAuthenticated, onLogin, onLogout, isSupabaseConfigured, isPasswordRecovery, onRequestPasswordReset, onUpdatePassword }) {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [loginView, setLoginView] = useState('sign-in');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [form, setForm] = useState(EMPTY_FORM);
   const [cadFile, setCadFile] = useState(null);
   const [loginError, setLoginError] = useState('');
   const [formMessage, setFormMessage] = useState('');
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    if (isPasswordRecovery) setLoginView('reset-password');
+  }, [isPasswordRecovery]);
 
   if (!isOpen) return null;
 
@@ -36,6 +45,38 @@ function AdminPanel({ isOpen, onClose, onAddDesign, isAuthenticated, onLogin, on
       return;
     }
     setLoginError('');
+  };
+
+  const handlePasswordResetRequest = async (event) => {
+    event.preventDefault();
+    setLoginError('');
+    const sent = await onRequestPasswordReset(credentials.username);
+    if (sent) {
+      setLoginError('');
+      setFormMessage('If that administrator email exists, a password reset link is on its way.');
+      return;
+    }
+    setLoginError('We could not send the reset email. Check the address and try again.');
+  };
+
+  const handlePasswordUpdate = async (event) => {
+    event.preventDefault();
+    if (newPassword.length < 8) {
+      setLoginError('Use a password with at least 8 characters.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setLoginError('The passwords do not match.');
+      return;
+    }
+    const updated = await onUpdatePassword(newPassword);
+    if (!updated) {
+      setLoginError('This recovery link is invalid or the account is not an administrator.');
+      return;
+    }
+    setLoginError('');
+    setNewPassword('');
+    setConfirmPassword('');
   };
 
   const handleSubmit = async (event) => {
@@ -79,15 +120,36 @@ function AdminPanel({ isOpen, onClose, onAddDesign, isAuthenticated, onLogin, on
           <button className="admin-close" type="button" onClick={onClose} aria-label="Close administration panel">×</button>
         </div>
 
-        {!isAuthenticated ? (
+        {!isAuthenticated || isPasswordRecovery ? (
+          isPasswordRecovery ? (
+          <form className="admin-login" onSubmit={handlePasswordUpdate}>
+            <p>Choose a new password for your administrator account.</p>
+            <label>New password<input type={showNewPassword ? 'text' : 'password'} value={newPassword} onChange={(event) => setNewPassword(event.target.value)} autoComplete="new-password" minLength="8" required /></label>
+            <label>Confirm new password<input type={showNewPassword ? 'text' : 'password'} value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} autoComplete="new-password" minLength="8" required /></label>
+            <label className="password-toggle"><input type="checkbox" checked={showNewPassword} onChange={(event) => setShowNewPassword(event.target.checked)} /> Show password</label>
+            {loginError && <p className="admin-error" role="alert">{loginError}</p>}
+            <button className="admin-primary" type="submit">Set new password</button>
+          </form>
+          ) : loginView === 'forgot-password' ? (
+          <form className="admin-login" onSubmit={handlePasswordResetRequest}>
+            <p>Enter your administrator email and we’ll send a secure, temporary reset link.</p>
+            <label>Email<input type="email" value={credentials.username} onChange={(event) => setCredentials({ ...credentials, username: event.target.value })} autoComplete="email" required /></label>
+            {loginError && <p className="admin-error" role="alert">{loginError}</p>}
+            {formMessage && <p className="admin-message" role="status">{formMessage}</p>}
+            <button className="admin-primary" type="submit">Send reset link</button>
+            <button className="admin-secondary" type="button" onClick={() => { setLoginView('sign-in'); setLoginError(''); setFormMessage(''); }}>Back to sign in</button>
+          </form>
+          ) : (
           <form className="admin-login" onSubmit={handleLogin}>
             <p>Sign in to add a robot design and its CAD reference.</p>
-            <label>{isSupabaseConfigured ? 'Email' : 'Username'}<input type={isSupabaseConfigured ? 'email' : 'text'} value={credentials.username} onChange={(event) => setCredentials({ ...credentials, username: event.target.value })} autoComplete="username" required /></label>
-            <label>Password<input type="password" value={credentials.password} onChange={(event) => setCredentials({ ...credentials, password: event.target.value })} autoComplete="current-password" required /></label>
+            <label>Email<input type="email" value={credentials.username} onChange={(event) => setCredentials({ ...credentials, username: event.target.value })} autoComplete="username" required /></label>
+            <label>Password<input type={showPassword ? 'text' : 'password'} value={credentials.password} onChange={(event) => setCredentials({ ...credentials, password: event.target.value })} autoComplete="current-password" required /></label>
+            <label className="password-toggle"><input type="checkbox" checked={showPassword} onChange={(event) => setShowPassword(event.target.checked)} /> Show password</label>
             {loginError && <p className="admin-error" role="alert">{loginError}</p>}
             <button className="admin-primary" type="submit">Sign in</button>
-            <small>Use the administrator account created in Supabase Authentication.</small>
+            {isSupabaseConfigured ? <><small>Use the administrator account created in Supabase Authentication.</small><button className="admin-secondary" type="button" onClick={() => { setLoginView('forgot-password'); setLoginError(''); }}>Forgot password?</button></> : <small>Administrator sign-in is unavailable until Supabase Authentication is configured.</small>}
           </form>
+          )
         ) : (
           <>
             <div className="admin-session">

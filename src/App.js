@@ -18,6 +18,7 @@ function App() {
   const [customCards, setCustomCards] = useState([]);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
   const TagsStates = Object.freeze({
     NA: 'N/A',
     //Seasons
@@ -268,7 +269,11 @@ function App() {
       };
       loadSupabaseDesigns();
       supabase.auth.getSession().then(({ data }) => setIsAdminAuthenticated(Boolean(data.session)));
-      const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'PASSWORD_RECOVERY') {
+          setIsPasswordRecovery(true);
+          setIsAdminOpen(true);
+        }
         setIsAdminAuthenticated(Boolean(session));
       });
       return () => authListener.subscription.unsubscribe();
@@ -306,6 +311,29 @@ function App() {
   const handleAdminLogout = async () => {
     if (isSupabaseConfigured) await supabase.auth.signOut();
     setIsAdminAuthenticated(false);
+    setIsPasswordRecovery(false);
+  };
+
+  const handlePasswordResetRequest = async (email) => {
+    if (!isSupabaseConfigured) return false;
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin,
+    });
+    return !error;
+  };
+
+  const handlePasswordUpdate = async (password) => {
+    if (!isSupabaseConfigured) return false;
+    const { data, error } = await supabase.auth.updateUser({ password });
+    if (error || !data.user) return false;
+    const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', data.user.id).single();
+    if (!profile?.is_admin) {
+      await supabase.auth.signOut();
+      return false;
+    }
+    setIsPasswordRecovery(false);
+    setIsAdminAuthenticated(true);
+    return true;
   };
 
   const handleAddDesign = async (design) => {
@@ -461,7 +489,7 @@ function App() {
           <div className="toolbar-actions">
             <span className="result-count">{cards.length} of {allCards.length} designs</span>
             <MechanismHandler Tags={TagsList} setSeason={setSeason} setDrive={setDrivetrain} setTags={setTags} onClear={clearFilters} clearSignal={filterReset} />
-            {isSupabaseConfigured && <button className="admin-trigger" type="button" onClick={() => setIsAdminOpen(true)}>Admin</button>}
+            <button className="admin-trigger" type="button" onClick={() => setIsAdminOpen(true)}>Admin</button>
           </div>
         </section>
 
@@ -504,7 +532,7 @@ function App() {
         ))}
       </div>
       </main>
-      {isSupabaseConfigured && <AdminPanel
+        <AdminPanel
           isOpen={isAdminOpen}
           onClose={() => setIsAdminOpen(false)}
           onAddDesign={handleAddDesign}
@@ -512,7 +540,10 @@ function App() {
           onLogin={handleAdminLogin}
           onLogout={handleAdminLogout}
           isSupabaseConfigured={isSupabaseConfigured}
-        />}
+          isPasswordRecovery={isPasswordRecovery}
+          onRequestPasswordReset={handlePasswordResetRequest}
+          onUpdatePassword={handlePasswordUpdate}
+        />
     </div>
   );
 }

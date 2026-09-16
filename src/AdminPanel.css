@@ -101,6 +101,24 @@
   box-shadow: 0 0 0 2px rgba(242, 139, 77, 0.18);
 }
 
+.admin-login .password-toggle {
+  display: flex;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+  color: #aeb4b0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.password-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: #f28b4d;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -130,6 +148,23 @@
 .admin-primary:disabled {
   cursor: wait;
   opacity: 0.65;
+}
+
+.admin-secondary {
+  width: 100%;
+  border: 1px solid #4b514d;
+  padding: 11px 16px;
+  color: #f28b4d;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.admin-secondary:hover {
+  border-color: #f28b4d;
+  background: rgba(242, 139, 77, 0.1);
 }
 
 .admin-error {
