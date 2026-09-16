@@ -84,8 +84,12 @@
   position: absolute;
   top: 50px;
   right: 16px;
+  min-width: 0;
   width: calc(100% - 142px);
+  padding: 0 4px;
+  overflow-wrap: anywhere;
   color: #f4f2ed;
+  text-align: center;
 }
 
 .card-text-container.fullscreen {
@@ -111,13 +115,15 @@
 
 .card-description {
   display: -webkit-box;
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   overflow: hidden;
   color: #aeb4b0;
   font-size: 13px;
-  line-height: 1.45;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
+  line-clamp: 6;
 }
 
 .card-description.fullscreen {
