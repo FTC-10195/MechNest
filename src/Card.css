@@ -7,7 +7,7 @@
 
 .card {
   position: relative;
-  min-height: 282px;
+  min-height: 350px;
   overflow: hidden;
   border: 1px solid #343b38;
   background: #1b201f;
@@ -88,10 +88,10 @@
   position: absolute;
   top: 50px;
   right: 16px;
-  bottom: 76px;
+  bottom: 96px;
   min-width: 0;
   width: calc(100% - 142px);
-  max-height: calc(100% - 126px);
+  max-height: calc(100% - 146px);
   padding: 0 4px;
   overflow: hidden;
   overflow-wrap: anywhere;
@@ -168,7 +168,7 @@
 .tag-container-large {
   position: absolute;
   right: 16px;
-  bottom: 48px;
+  bottom: 52px;
   left: 16px;
   display: flex;
   flex-wrap: wrap;
@@ -242,6 +242,6 @@
   }
 
   .card {
-    min-height: 270px;
+    min-height: 330px;
   }
 }
